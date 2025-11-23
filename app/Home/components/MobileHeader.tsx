@@ -3,7 +3,7 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { forumFont, notoSansFont } from "@/app/utils/font";
-import homeImage from "@/public/home/low-angle-friends-drinking-coffee.webp";
+import homeImage from "@/public/home/headerImg.webp";
 import MobileGourmetBliss from "./MobileGourmentBliss";
 
 type Props = {
