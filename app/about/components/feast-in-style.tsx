@@ -34,13 +34,13 @@ export const FeastInStyle = () => {
             Taste The Wasabi Experience
           </p>
 
-          <Link
-            href={"/contact"}
+          <a
+            href="tel:+12509841632"
             style={{ transition: "0.4s ease" }}
             className={`${Optima_bold.className} bg-[#C0A078] border-white/30 hover:border-[#C0A078] border text-black px-[2rem] tracking-widest cursor-pointer hover:bg-white hover:text-black py-[0.6rem]  rounded-full w-fit`}
           >
             RESERVE{" "}
-          </Link>
+          </a>
         </div>
       </div>
     </div>

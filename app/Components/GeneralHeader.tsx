@@ -82,12 +82,12 @@ const GeneralHeader = ({ canShow }: any) => {
             </ul>
           </div>
           {/* Right: CTA */}
-          <Link
-            href="/reserve"
+          <a
+            href="tel:+12509841632"
             className={`rounded-full px-6 py-3 text-base font-normal bg-[#C0A078] text-black uppercase  shadow hover:bg-[#b99c71] transition ${notoSansFont.className}  tracking-widest`}
           >
             Book a reservation
-          </Link>
+          </a>
         </motion.div>
       </motion.nav>
 

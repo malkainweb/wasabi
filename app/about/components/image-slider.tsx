@@ -43,7 +43,8 @@ const sixthItem = () => {
           Discover dishes designed to delight the senses—crafted with precision,
           inspired by tradition, and served with intention.
         </motion.p>
-        <motion.button
+        <motion.a
+          href="/menu"
           initial={{ translateX: 80, opacity: 0.5 }}
           whileInView={{ translateX: 0, opacity: 1 }}
           transition={{
@@ -52,11 +53,11 @@ const sixthItem = () => {
 
             delay: 0.3,
           }}
-          className={`text-sm text-nowrap px-6 py-3 text-black rounded-3xl text-center w-[45%] mx-auto ${notoSansFont.className}`}
+          className={`text-sm text-nowrap px-6 py-3 text-black rounded-3xl text-center  mx-auto ${notoSansFont.className}`}
           style={{ backgroundColor: "#C0A078" }}
         >
           SEE MENU
-        </motion.button>
+        </motion.a>
       </motion.div>
     </div>
   );

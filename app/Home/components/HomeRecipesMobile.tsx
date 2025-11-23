@@ -24,12 +24,12 @@ export default function HomeRecipesMobile() {
 
       {/* CTA */}
       <div className="mt-3 flex justify-center">
-        <Link
-          href="/reserve"
+        <a
+          href="tel:+12509841632"
           className={`${notoSansFont.className} rounded-full bg-[#C0A078] px-6 py-3 text-[#1B140D] font-semibold tracking-[0.12em] text-[0.94rem] hover:brightness-95 transition`}
         >
           RESERVE A TABLE
-        </Link>
+        </a>
       </div>
 
       {/* 2 x 2 dishes */}

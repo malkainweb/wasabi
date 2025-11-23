@@ -20,7 +20,7 @@ export default function MobileGourmetBliss({
   title = "EXPERIENCE\nGOURMET BLISS",
   subcopy = "Savor Elegance, Flavor, And\nAmbiance Like Never Before.",
   schedule = "Now Open: Tuesday – Sunday\n | 5 PM – 11 PM",
-  ctaHref = "/reserve",
+  ctaHref = "  tel:+12509841632",
   ctaLabel = "RESERVE A TABLE",
   className = "",
 }: Props) {
@@ -45,12 +45,12 @@ export default function MobileGourmetBliss({
           <span className="block">{schedule}</span>
         </p>
 
-        <Link
+        <a
           href={ctaHref}
           className={`${notoSansFont.className} mt-1 inline-flex items-center justify-center rounded-full border border-white/80  text-white px-5 py-3.5 text-xs tracking-[0.12em] hover:bg-white hover:text-black transition-colors`}
         >
           {ctaLabel}
-        </Link>
+        </a>
       </div>
 
       <div className="aspect-[1/0.9] overflow-hidden  pt-10 ">

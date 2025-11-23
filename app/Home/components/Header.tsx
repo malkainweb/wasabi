@@ -177,12 +177,12 @@ const Header = () => {
             </ul>
           </div>
           {/* Right: CTA */}
-          <Link
-            href="/reserve"
+          <a
+            href="tel:+12509841632"
             className={`rounded-full px-6 py-3 text-base font-normal bg-[#C0A078] text-black uppercase  shadow hover:bg-[#b99c71] transition ${notoSansFont.className}  tracking-widest`}
           >
             Book a reservation
-          </Link>
+          </a>
         </motion.div>
       </motion.nav>
       {/* Mobile nav */}
@@ -343,7 +343,7 @@ const Header = () => {
                 style={{ transition: "0.4s ease" }}
                 className={`${notoSansFont.className} px-[2.4rem] tracking-widest cursor-pointer hover:bg-white hover:text-black py-[0.7rem] border border-white rounded-full w-fit`}
               >
-                <Link href="/reserve">RESERVE A TABLE</Link>
+                <a href="tel:+12509841632">RESERVE A TABLE</a>
               </button>
             </div>
 

@@ -304,13 +304,13 @@ const HomeRecipes = () => {
                 >
                   Reserve
                 </h2>
-                <Link
-                  href={"/reserve"}
+                <a
+                  href="tel:+12509841632"
                   style={{ transition: "0.6s ease" }}
                   className={`${notoSansFont.className}   group-hover:opacity-100 opacity-0  absolute top-[50%] translate-x-[-50%]  left-[50%] translate-y-[-50%] px-[1rem] tracking-widest cursor-pointer bg-[#C0A078] hover:text-white text-black hover:bg-black border border-[#C0A078] hover:border-white py-[0.7rem] font-semibold rounded-full w-fit`}
                 >
                   RESERVE A TABLE{" "}
-                </Link>
+                </a>
               </div>
               {recipes.map((recipe, index) => (
                 <motion.div

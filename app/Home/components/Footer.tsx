@@ -20,20 +20,24 @@ const Footer = () => {
     {
       href: "tel:+1-250-984-1632",
       label: "Phone",
+      target: "_blank",
+      rel: "noopener noreferrer",
       iconClass: "bi bi-telephone",
     },
     {
       href: "mailto:Info@wasabimodernkitchen.com",
       label: "Email",
+      rel: "noopener noreferrer",
+      target: "_blank",
       iconClass: "bi bi-envelope",
     },
-    {
-      href: "https://instagram.com",
-      label: "Instagram",
-      iconClass: "bi bi-instagram",
-      target: "_blank",
-      rel: "noopener noreferrer",
-    },
+    // {
+    //   href: "https://instagram.com",
+    //   label: "Instagram",
+    //   iconClass: "bi bi-instagram",
+    //   target: "_blank",
+    //   rel: "noopener noreferrer",
+    // },
   ];
   return (
     <footer
@@ -145,7 +149,7 @@ const Footer = () => {
               SEE LOCATION
             </Link> */}
             <div className="flex gap-7 mt-1">
-              {/* {iconLinks.map((icon) => (
+              {iconLinks.map((icon) => (
                 <a
                   key={icon.label}
                   href={icon.href}
@@ -156,7 +160,7 @@ const Footer = () => {
                 >
                   <i className={icon.iconClass}></i>
                 </a>
-              ))} */}
+              ))}
             </div>
           </div>
 

@@ -1,17 +1,18 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { forumFont, notoSansFont } from '@/app/utils/font';
-import mainImg from '@/public/home/ourstory/ourstory.webp';
-import abouutButton from '@/public/home/ourstory/abouutButton.webp';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import Image from "next/image";
+import { forumFont, notoSansFont } from "@/app/utils/font";
+import mainImg from "@/public/home/ourstory/ourstory.webp";
+import abouutButton from "@/public/home/ourstory/abouutButton.webp";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
+import Link from "next/link";
 
 const OurStory = () => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ['start end', 'end start'],
+    offset: ["start end", "end start"],
   });
 
   const scale = useTransform(
@@ -32,7 +33,7 @@ const OurStory = () => {
 
         <h2
           className={`${forumFont.className} text-[#E9DFCF] uppercase leading-tight tracking-[0.32em]`}
-          style={{ fontSize: 'clamp(2rem, 9vw, 3rem)' }}
+          style={{ fontSize: "clamp(2rem, 9vw, 3rem)" }}
         >
           OUR STORY
         </h2>
@@ -67,8 +68,9 @@ const OurStory = () => {
           </div>
         </div>
 
-        <button
-          style={{ transition: '0.6s ease' }}
+        <Link
+          href={"/about"}
+          style={{ transition: "0.6s ease" }}
           className={`${notoSansFont.className} tracking-[0.18em] bg-[#C0A078] text-black hover:text-white hover:bg-black border border-[#C0A078] hover:border-white mt-9 pl-1 pr-3 py-2 text-sm flex items-center gap-2 rounded-full`}
         >
           <span className="w-10 aspect-square rounded-full overflow-hidden">
@@ -79,7 +81,7 @@ const OurStory = () => {
             />
           </span>
           ABOUT WASABI
-        </button>
+        </Link>
       </div>
 
       {/* Desktop layout (unchanged) */}
@@ -111,8 +113,9 @@ const OurStory = () => {
             experience.
           </p>
 
-          <button
-            style={{ transition: '0.6s ease' }}
+          <Link
+            href={"/about"}
+            style={{ transition: "0.6s ease" }}
             className={`${notoSansFont.className} tracking-widest cursor-pointer bg-[#C0A078] hover:text-white text-black hover:bg-black border border-[#C0A078] hover:border-white py-[0.3rem] mt-8 pl-[0.3rem] pr-[0.7rem] text-sm flex items-center gap-[0.5rem] rounded-full w-fit`}
           >
             <div className="aspect-square w-[2.8rem] rounded-full">
@@ -123,7 +126,7 @@ const OurStory = () => {
               />
             </div>
             ABOUT WASABI
-          </button>
+          </Link>
         </div>
       </div>
     </div>
