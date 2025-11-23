@@ -140,11 +140,12 @@ const OurExperince = () => {
                     translateX: arrTranslateX[idx],
                     translateY: arrTranslateY[idx],
                   }}
-                  className={` overflow-hidden w-fit  h-[100%] max-h-[26rem]   aspect-[1/1.5] bg-black  `}
+                  className={` overflow-hidden w-fit  relative h-[100%] max-h-[26rem]   aspect-[1/1.5] bg-black  `}
                 >
                   <Image
                     src={item.img}
                     alt={item.label}
+                    fill // Use fill instead of className sizing
                     className="w-full h-full object-cover"
                   />{" "}
                 </motion.div>
@@ -269,11 +270,12 @@ const OurExperince = () => {
                     translateY: arr2TranslateY[idx],
                     zIndex: arr2.length - idx, // ← This line gives higher z-index to lower idx
                   }}
-                  className={` overflow-hidden w-fit  h-[100%] max-h-[26rem]   aspect-[1/1.5] bg-black  `}
+                  className={` overflow-hidden w-fit relative  h-[100%] max-h-[26rem]   aspect-[1/1.5] bg-black  `}
                 >
                   <Image
                     src={item.img}
                     alt={item.label}
+                    fill // Use fill instead of className sizing
                     className="w-full h-full object-cover"
                   />{" "}
                 </motion.div>
