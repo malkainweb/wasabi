@@ -69,7 +69,7 @@ const Header = () => {
   // Map progress [0, 1] to width ["10%", "100%"]
   const translateY = useTransform(scrollYProgress, [0.04, 0.2], ["20%", "0%"]);
   const width = useTransform(scrollYProgress, [0.25, 0.58], ["30%", "100%"]);
-  const navWidth = useTransform(scrollYProgress, [0, 0.2], ["10rem", "100rem"]);
+  const navWidth = useTransform(scrollYProgress, [0, 0.2], ["40rem", "100rem"]);
   // Animate bg opacity from 0.1 (10%) to 0.8 (80%) between scrollYProgress 0 and 0.2
   const navBgOpacity = useTransform(scrollYProgress, [0.1, 0.2], [0.1, 0.8]);
   const navBgColor = useMotionTemplate`rgba(77, 78, 77, ${navBgOpacity})`;
@@ -140,7 +140,7 @@ const Header = () => {
           // top: canShow && scrollDirection === "down" ? "-6rem" : "1rem",
           transition: "top 0.5s cubic-bezier(.76,0,.24,1)",
         }}
-        className=" md:flex justify-center left-[50%] hidden  translate-x-[-50%] fixed top-[1rem] w-[100rem] max-w-[95%] z-[99999] items-center "
+        className=" md:flex justify-center md:w-[50rem]  left-[50%] hidden  translate-x-[-50%] fixed top-[1rem] w-[100rem] max-w-[95%] z-[99999] items-center "
       >
         <motion.div
           style={{ backgroundColor: navBgColor }}
