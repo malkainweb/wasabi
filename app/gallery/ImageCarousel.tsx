@@ -1,10 +1,52 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import gallery1 from "@/public/gallery/gallery1.webp";
-import gallery2 from "@/public/gallery/gallery2.webp";
-import gallery3 from "@/public/gallery/gallery3.webp";
-import gallery4 from "@/public/gallery/gallery4.webp";
-import gallery5 from "@/public/gallery/gallery5.webp";
+// Import all gallery images
+import DSC04282 from "@/public/gallery/updated/DSC04282.webp";
+import DSC04289 from "@/public/gallery/updated/DSC04289.webp";
+import DSC04299 from "@/public/gallery/updated/DSC04299.webp";
+import DSC04316 from "@/public/gallery/updated/DSC04316.webp";
+import DSC04320 from "@/public/gallery/updated/DSC04320.webp";
+import DSC04322 from "@/public/gallery/updated/DSC04322.webp";
+import DSC04323 from "@/public/gallery/updated/DSC04323.webp";
+import DSC04325 from "@/public/gallery/updated/DSC04325.webp";
+import DSC04332 from "@/public/gallery/updated/DSC04332.webp";
+import DSC04340 from "@/public/gallery/updated/DSC04340.webp";
+import DSC04344 from "@/public/gallery/updated/DSC04344.webp";
+import DSC04345 from "@/public/gallery/updated/DSC04345.webp";
+import DSC04393 from "@/public/gallery/updated/DSC04393.webp";
+import IMG_6454 from "@/public/gallery/updated/IMG_6454.webp";
+import IMG_6456 from "@/public/gallery/updated/IMG_6456.webp";
+import IMG_6458 from "@/public/gallery/updated/IMG_6458.webp";
+import IMG_6460 from "@/public/gallery/updated/IMG_6460.webp";
+import IMG_6462 from "@/public/gallery/updated/IMG_6462.webp";
+import IMG_6464 from "@/public/gallery/updated/IMG_6464.webp";
+import IMG_6465 from "@/public/gallery/updated/IMG_6465.webp";
+import IMG_6466 from "@/public/gallery/updated/IMG_6466.webp";
+
+// Create your gallery array
+const galleryImages = [
+  DSC04282,
+  DSC04289,
+  DSC04299,
+  DSC04316,
+  DSC04320,
+  // DSC04322,
+  // DSC04323,
+  // DSC04325,
+  // DSC04332,
+  // DSC04340,
+  // DSC04344,
+  // DSC04345,
+  // DSC04393,
+  // IMG_6454,
+  // IMG_6456,
+  // IMG_6458,
+  // IMG_6460,
+  // IMG_6462,
+  IMG_6464,
+  IMG_6465,
+  IMG_6466,
+];
 import {
   useScroll,
   useTransform,
@@ -14,38 +56,9 @@ import {
 } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 import { notoSansFont } from "@/app/utils/font";
-import VideoGallery, { galleryImagesMobile } from "./mobileVideoCarousel";
+import VideoGallery from "./mobileVideoCarousel";
 
 const ImageCarousel = ({ show, margin }: any) => {
-  // Step 1: Build your array
-  const galleryImages = [
-    {
-      src: gallery1,
-      text: "STACYS WEDDING PROPOSAL",
-      author: "by kelvin adams",
-    },
-    {
-      src: gallery2,
-      text: "DINNER DATE",
-      author: "by kelvin adams",
-    },
-    {
-      src: gallery3,
-      text: "BUSINESS MEET UP",
-      author: "by kelvin adams",
-    },
-    {
-      src: gallery4,
-      text: "ROMANTIC EVENING",
-      author: "by kelvin adams",
-    },
-    {
-      src: gallery5,
-      text: "FAMILY CELEBRATION",
-      author: "by kelvin adams",
-    },
-  ];
-
   const [firstImageFullyScaled, setFirstImageFullyScaled] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -63,8 +76,8 @@ const ImageCarousel = ({ show, margin }: any) => {
   });
 
   // Animate X translation and scale based on scroll position
-  const x = useTransform(scrollYProgress, [0.27, 1], ["50%", "-80%"]);
-  const scale = useTransform(scrollYProgress, [0, 0.26], [0.85, 1]);
+  const x = useTransform(scrollYProgress, [0.21, 1], ["50%", "-80%"]);
+  const scale = useTransform(scrollYProgress, [0, 0.2], [0.85, 1]);
 
   // Keep a ref for last index so we only update state when it changes
   const lastIndexRef = useRef(activeIndex);
@@ -120,7 +133,7 @@ const ImageCarousel = ({ show, margin }: any) => {
       >
         {!show && <div className="h-[20vh]"></div>}
         <div className="h-[100vh] flex justify-end pb-[5vh] items-end w-full sticky top-0 left-0">
-          <AnimatePresence mode="wait">
+          {/* <AnimatePresence mode="wait">
             {activeIndex !== 0 || firstImageFullyScaled ? (
               <motion.div
                 key={activeIndex}
@@ -147,7 +160,7 @@ const ImageCarousel = ({ show, margin }: any) => {
                 </span>
               </motion.div>
             ) : null}
-          </AnimatePresence>
+          </AnimatePresence> */}
 
           <AnimatePresence mode="popLayout">
             <motion.div
@@ -162,7 +175,7 @@ const ImageCarousel = ({ show, margin }: any) => {
               className="w-full h-[100vh] absolute bottom-0 left-0 z-0 origin-bottom"
             >
               <Image
-                src={galleryImages[activeIndex].src}
+                src={galleryImages[activeIndex]}
                 alt="Gallery Background"
                 className="object-cover h-full w-full"
                 style={{ filter: "brightness(0.6)" }}
@@ -196,7 +209,7 @@ const ImageCarousel = ({ show, margin }: any) => {
           ${index === activeIndex ? "ring-4 ring-[white]" : ""}`}
                 >
                   <Image
-                    src={image.src}
+                    src={image}
                     alt={`Gallery Image ${index + 1}`}
                     className="w-full h-full object-cover"
                   />
@@ -208,7 +221,9 @@ const ImageCarousel = ({ show, margin }: any) => {
       </div>
       <VideoGallery
         showdivider={false}
-        items={galleryImagesMobile}
+        items={galleryImages.map((img) => ({
+          thumbnail: img,
+        }))}
         className={`lg:hidden ${margin ? "mt-[9rem]" : " "}`}
       />
     </>
