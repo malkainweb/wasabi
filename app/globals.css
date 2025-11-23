@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  background-color: #fefaf4;
+  overflow-x: clip;
+}
+
+.border2 {
+  border: 1px solid green;
+}
+
+@keyframes infiniteScrollX {
+  to {
+    left: -200px;
+  }
+}
+
+.scrollX {
+  left: max(calc(12rem * 6), 100%);
+  animation-name: infiniteScrollX;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.scrollX-container:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+
+@keyframes vertical-infinite-scroll {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(calc(-50.3%));
+  }
+}
+.infinite-scroll-container {
+  animation: vertical-infinite-scroll 6s linear infinite;
+}
+
+.infinite-scroll-container:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
+@keyframes Reverse-vertical-infinite-scroll {
+  0% {
+    transform: translateY(-50.3%);
+  }
+  100% {
+    transform: translateY(calc(0%));
+  }
+}
+.Reverse_infinite-scroll-container {
+  animation: Reverse-vertical-infinite-scroll 6s linear infinite;
+}
+
+.Reverse_infinite-scroll-container:hover {
+  animation-play-state: paused;
+  cursor: pointer;
+}
