@@ -145,7 +145,7 @@ const Footer = () => {
               SEE LOCATION
             </Link> */}
             <div className="flex gap-7 mt-1">
-              {iconLinks.map((icon) => (
+              {/* {iconLinks.map((icon) => (
                 <a
                   key={icon.label}
                   href={icon.href}
@@ -156,7 +156,7 @@ const Footer = () => {
                 >
                   <i className={icon.iconClass}></i>
                 </a>
-              ))}
+              ))} */}
             </div>
           </div>
 
