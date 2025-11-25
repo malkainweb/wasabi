@@ -6,7 +6,7 @@ import Image from "next/image";
 const NewMenu = () => {
   return (
     <>
-      <div className="md:w-[100rem] w-full mx-auto lg:flex-row justify-center lg:gap-8 flex flex-col items-center pb-20 pt-32  max-w-[96%]">
+      <div className="md:w-[100rem] min-h-screen w-full mx-auto lg:flex-row justify-center lg:gap-8 flex flex-col items-center pb-20 pt-32  max-w-[96%]">
         <div className="">
           <Image
             src={menu1}
