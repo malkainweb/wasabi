@@ -32,12 +32,11 @@ export default function MobileLocationCard({
         fill
         className="object-cover"
         priority
-        sizes="100vw"
       />
 
       {/* Dark vignette for readability */}
-      <div className="absolute inset-0 bg-black/40" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/25 to-black/10" />
+      {/* <div className="absolute inset-0 bg-black/40" /> */}
+      <div className="absolute inset-0 bg-black/10" />
 
       {/* Title */}
       <div className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] w-full flex justify-center items-center flex-col">

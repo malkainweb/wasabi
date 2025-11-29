@@ -1,5 +1,6 @@
 "use client";
 import mainImg from "@/public/home/ourExperience/ExpMain.webp";
+import mobmainImg from "@/public/home/ourExperience/mob_location.webp";
 import foodimg from "@/public/home/foodimg.webp";
 import logo from "@/public/logo.webp";
 import ExpThree from "@/public/home/ourExperience/ExpThree.webp";
@@ -113,7 +114,7 @@ const OurExperince = () => {
 
   return (
     <>
-      <MobileLocationCard bgImage={mainImg} />
+      <MobileLocationCard bgImage={mobmainImg} />
       <motion.div
         ref={containerRef}
         initial={{ scale: 1.4, opacity: 0, y: "-4rem" }}

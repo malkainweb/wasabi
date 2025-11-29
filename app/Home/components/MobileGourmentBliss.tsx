@@ -3,7 +3,7 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { forumFont, notoSansFont } from "@/app/utils/font";
-import gourmentImage from "@/public/home/close-up-shiny-glassware-standing-dinner-plate.webp";
+import gourmentImage from "@/public/home/mob_bliss.webp";
 
 type Props = {
   image?: StaticImageData | string;
@@ -53,13 +53,8 @@ export default function MobileGourmetBliss({
         </a>
       </div>
 
-      <div className="aspect-[1/0.9] overflow-hidden  pt-10 ">
-        <Image
-          src={image}
-          alt=""
-          priority
-          className=" w-full h-full  object-cover"
-        />
+      <div className="overflow-hidden  pt-10 ">
+        <Image src={image} alt="" priority className=" w-full h-auto " />
       </div>
     </div>
   );

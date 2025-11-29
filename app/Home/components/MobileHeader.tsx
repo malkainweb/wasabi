@@ -3,7 +3,7 @@
 import Image, { StaticImageData } from "next/image";
 import Link from "next/link";
 import { forumFont, notoSansFont } from "@/app/utils/font";
-import homeImage from "@/public/home/headerImg.webp";
+import homeImage from "@/public/home/mob_hero.webp";
 import MobileGourmetBliss from "./MobileGourmentBliss";
 
 type Props = {
@@ -42,7 +42,7 @@ export default function MobileHeader({
         </div>
 
         {/* content */}
-        <div className="absolute inset-x-0 bottom-12 flex flex-col items-center pb-6 sm:pb-8 gap-6">
+        <div className="absolute inset-x-0 bottom-7 flex flex-col items-center pb-6 sm:pb-8 gap-6">
           {/* heading */}
           <div className="px-6 text-center ">
             <h2
