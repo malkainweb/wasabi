@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { forumFont, notoSansFont } from "@/app/utils/font";
-import mainImg from "@/public/home/ourstory/ourstory.webp";
+// import mainImg from "@/public/home/ourstory/ourstory.webp";
 import mobMainImg from "@/public/home/ourstory/mob_story.webp";
 import abouutButton from "@/public/home/ourstory/abouutButton.webp";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -90,7 +90,7 @@ const OurStory = () => {
         <div className="w-full overflow-hidden" ref={ref}>
           <motion.div style={{ scale }} className="w-full h-full">
             <Image
-              src={mainImg}
+              src={mobMainImg}
               alt="Our Story"
               className="w-full h-full object-cover"
             />
