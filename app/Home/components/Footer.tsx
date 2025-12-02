@@ -73,14 +73,14 @@ const Footer = () => {
         </nav>
 
         {/* design the middle on here  */}
-        <div className="mt-[4rem]  w-[90%] md:w-fit  mb-[0rem] relative">
+        <div className="mt-[4rem]   w-[90%] md:w-fit  mb-[0rem] relative">
           <Image
             src={footerLogo}
             alt="footer logo"
             className="w-[13rem] absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] h-fit"
           />
           <div
-            className="relative md:max-w-[500px] w-full bg-[#4D4E4D]/25 backdrop-blur-[50px] rounded-[30px] py-7 px-7 md:px-0 md:py-10 text-[#C0A079] mx-auto"
+            className="relative md:max-w-[600px]  w-full bg-[#4D4E4D]/25 backdrop-blur-[50px] rounded-[30px] py-7 px-7 md:px-0 md:py-10 text-[#C0A079] mx-auto"
             style={{ boxShadow: "0 6px 40px 0 #0009" }}
           >
             <div className="relative z-10 flex flex-col gap-2">
@@ -98,20 +98,28 @@ const Footer = () => {
                 </p>
               </div>
               <div
-                className={`flex flex-col md:px-8 text-sm tracking-[0.2rem] gap-2 text-[#b2afab] mb-2 ${notoSansFont.className}`}
+                className={`flex  flex-col justify-between text-balance md:px-8 text-sm tracking-[0.2rem] gap-2 text-[#b2afab] mb-2 ${notoSansFont.className}`}
               >
-                <div className="flex items-center gap-4">
-                  <span className="text-[#C0A079]/50">Opening Days</span>
-                  <span className="flex-1 border-b border-[#35302a] mx-2"></span>
-                  <span className="text-[#C0A079]/80 text-lg font-normal">
-                    Mon - Sat
+                <div className="flex items-center justify-between gap-4">
+                  <span className="text-[#C0A079]/50">Hours of Operation</span>
+                  <span className="flex-1 md:w-10 border-b border-[white]/10 mx-2"></span>
+                  <span className="text-[#C0A079]/80 md:text-lg  w-full md:w-fit  font-normal">
+                    7 days a week
                   </span>
                 </div>
-                <div className="flex items-center gap-4">
-                  <span className="text-[#C0A079]/50">Opening Time</span>
-                  <span className="flex-1 border-b border-[#35302a] mx-2"></span>
-                  <span className="text-[#C0A079]/80 font-normal">
-                    9AM - 10PM
+
+                <div className="flex items-center  justify-between gap-4">
+                  <span className="text-[#C0A079]/50">Sunday - Thursday</span>
+                  <span className="flex-1 md:w-10 border-b border-[white]/10 mx-2"></span>
+                  <span className="text-[#C0A079]/80  md:w-fit w-full md:text-sm text-xs font-normal">
+                    11:00 AM - 9:00 PM
+                  </span>
+                </div>
+                <div className="flex items-center  justify-between gap-4">
+                  <span className="text-[#C0A079]/50">Friday - Saturday</span>
+                  <span className="flex-1 md:w-10 border-b border-[white]/10 mx-2"></span>
+                  <span className="text-[#C0A079]/80  md:w-fit w-full md:text-sm text-xs font-normal">
+                    11:00 AM - 11:00 PM
                   </span>
                 </div>
               </div>

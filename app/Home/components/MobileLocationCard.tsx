@@ -7,17 +7,19 @@ type Props = {
   bgImage?: StaticImageData | string;
   city?: string;
   addressLines?: string[];
-  openingDays?: string; // e.g. "Mon - Sat"
+  openingTime2?: string; // e.g. "Mon - Sat"
   openingTime?: string; // e.g. "9AM - 10PM"
   className?: string;
+  openingDays?: string;
 };
 
 export default function MobileLocationCard({
   bgImage,
   city = "NEW YORK",
   addressLines = ["102-1020 Talasa way, ", "Kamloops BC V2H 03C"],
-  openingDays = "Mon - Sat",
-  openingTime = "9AM - 10PM",
+  openingDays = "7 days a week",
+  openingTime2 = "11:00 AM - 9:00 PM",
+  openingTime = "11:00 AM - 11:00 PM",
   className = "",
 }: Props) {
   return (
@@ -77,7 +79,7 @@ export default function MobileLocationCard({
               <span
                 className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white/50`}
               >
-                Opening Days
+                Hours of Operation
               </span>
               <span className="mx-3 flex-1 h-px bg-white/10" />
               <span
@@ -86,13 +88,27 @@ export default function MobileLocationCard({
                 {openingDays}
               </span>
             </div>
+            {/* Opening time2 */}
+            <div className="flex items-center py-3 font-light">
+              <span
+                className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white/50`}
+              >
+                Sunday - Thursday
+              </span>
+              <span className="mx-3 flex-1 h-px bg-white/10" />
+              <span
+                className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white`}
+              >
+                {openingTime2}
+              </span>
+            </div>
 
             {/* Opening Time */}
             <div className="flex items-center py-3 font-light">
               <span
                 className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white/50`}
               >
-                Opening Time
+                Friday - Saturday
               </span>
               <span className="mx-3 flex-1 h-px bg-white/10" />
               <span

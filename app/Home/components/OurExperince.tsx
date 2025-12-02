@@ -218,17 +218,30 @@ const OurExperince = () => {
                     className={`flex flex-col md:px-8  text-sm tracking-[0.2rem] gap-2 text-[white] mb-2 ${notoSansFont.className}`}
                   >
                     <div className="flex items-center gap-3">
-                      <span className=" text-[white]/60">Opening Days</span>
+                      <span className=" text-[white]/60">
+                        Hours of Operation
+                      </span>
                       <span className="  border-b border-[white]/50 w-[6rem] mx-2"></span>
                       <span className="text-[white]/80  font-normal">
                         Mon - Sat
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className=" text-[white]/60">Opening Time</span>
+                      <span className=" text-[white]/60">
+                        Sunday - Thursday
+                      </span>
                       <span className=" border-b border-[white]/50 w-[6rem] mx-2"></span>
                       <span className="text-[white]/80 font-normal">
-                        9AM - 10PM
+                        11:00 AM - 9:00 PM
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className=" text-[white]/60">
+                        Friday - Saturday
+                      </span>
+                      <span className=" border-b border-[white]/50 w-[6rem] mx-2"></span>
+                      <span className="text-[white]/80 font-normal">
+                        11:00 AM - 11:00 PM
                       </span>
                     </div>
                   </div>
