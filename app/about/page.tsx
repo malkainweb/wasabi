@@ -7,6 +7,7 @@ import { ImagesSlider } from "./components/image-slider";
 import { Timeline } from "./components/timeline";
 import { AboutAndBeliefMobile } from "./components/about-belief-mobile-only";
 import GeneralHeader from "../Components/GeneralHeader";
+import Team from "./components/aboutTeam";
 
 const Page = () => {
   const [canShow, setCanShow] = useState(false);
@@ -16,8 +17,8 @@ const Page = () => {
       <GeneralHeader canShow={canShow} />
       <AboutAndBelief setCanShow={setCanShow} />
       <AboutAndBeliefMobile setCanShow={setCanShow} />
-      <Timeline />
-
+      {/* <Timeline /> */}
+      <Team />
       <ImagesSlider />
       <FeastInStyle />
       <Footer />

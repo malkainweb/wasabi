@@ -9,14 +9,21 @@ import {
   useTransform,
 } from "framer-motion";
 import aboutmenu from "@/public/about/aboutMenu.webp";
+import line from "@/public/about/line.svg";
 
 import Logo from "@/public/about/White 2.png";
 import backgroundImage from "@/public/about/aboutHero.webp";
+import NotClearbackgroundImage from "@/public/about/aboutheronotclear.webp";
 import backgroundImageFilter from "@/public/about/AboutOverlay.webp";
 import chefHat from "@/public/about/ChefHat.svg";
 import building from "@/public/about/Building.svg";
 import stars from "@/public/about/PersonArmsSpread.svg";
-import { forumFont, notoSansFont, Optima_medium } from "@/app/utils/font";
+import {
+  forumFont,
+  notoSansFont,
+  Optima_medium,
+  Optima_regular,
+} from "@/app/utils/font";
 
 export const AboutAndBelief = ({ setCanShow }: any) => {
   const beliefRef = useRef(null);
@@ -41,17 +48,17 @@ export const AboutAndBelief = ({ setCanShow }: any) => {
     {
       icon: stars, // import stars from "@/public/..." etc
       alt: "stars",
-      label: "45 Staffs",
+      label: "21 Years experience",
     },
     {
       icon: building,
       alt: "locations",
-      label: "3 Locations",
+      label: "Across over 10 Japanese restaurant",
     },
     {
       icon: chefHat,
       alt: "chef hats",
-      label: "23 Chefs",
+      label: "13 years as an owner chef",
     },
   ];
 
@@ -124,47 +131,65 @@ export const AboutAndBelief = ({ setCanShow }: any) => {
         className="w-full absolute lg:left-0 lg:bottom-0  lg:pt-[7rem] z-20 flex items-center justify-center bg-black"
       >
         <motion.div
-          className="lg:w-[150rem] max-w-full relative  mx-auto flex flex-col items-center text-center "
+          className="lg:w-[150rem]  gap-10  max-w-full relative  mx-auto flex flex-col items-center text-center "
           layout
           transition={{ delayChildren: 0.3 }}
         >
-          <div className="h-[100vh] lg:h-[95%] w-full absolute top-0 left-0  bg-gradient-to-b  from-black via-black" />
-          <div className="mb-4 z-[10] flex flex-col items-center">
-            <span className="h-24 w-24">
-              <Image
-                src={Logo}
-                alt={"Wasabi-logo"}
-                className="object-cover h-full w-full"
-              />
-            </span>
-          </div>
+          <div className="h-[100vh]  lg:h-[95%] w-full absolute top-0 left-0  bg-gradient-to-b  from-black via-black" />
+          <div className=" z-[10] flex flex-col items-center">
+            <Image
+              src={Logo}
+              alt={"Wasabi-logo"}
+              className="object-contain h-24 w-24"
+            />
 
-          <div
-            className={`text-gray-100 z-[10] tracking-widest text-sm mb-8 ${forumFont.className}`}
-          >
-            OUR BELIEF
+            <p className={`text-gray-100 z-[10]  ${forumFont.className}`}>
+              ABOUT US
+            </p>
           </div>
+          <p className={`text-white/30 z-[10] ${forumFont.className}`}>
+            OUR PHILOSOPHY
+          </p>
 
           <motion.p
-            className={`text-[#FEFAF4] z-[10] capitalize text-lg md:text-[30px] font-normal md:leading-relaxed mb-8 tracking-widest max-w-4xl mx-auto ${forumFont.className}`}
+            className={`text-[#FEFAF4] z-[10]  text-lg md:text-4xl font-normal   text-balance uppercase max-w-5xl mx-auto ${forumFont.className}`}
             initial={{ translateY: 70 }}
             whileInView={{ translateY: 0 }}
             transition={{ type: "spring", bounce: 0.1 }}
           >
-            <span className={forumFont.className}>Because</span>{" "}
-            <span className="italic">Bold Deserves Beauty</span>.{" "}
-            <span className={forumFont.className}>
-              At Wasabi, Every Detail Is A
-            </span>{" "}
-            <span className="italic font-semibold">
-              Statement—Of Taste, Elegance, And Fire.
-            </span>{" "}
-            <span className={forumFont.className}>We Exist To Turn</span>{" "}
-            <span className="italic">Dining Into Art.</span>
+            Wasabi Modern Kitchen is built on the belief that excellent food
+            should be accessible everywhere—not only in large cities. We honor
+            the traditions of Japanese cuisine while embracing the modern
+            flavors of Asia and the Pacific Northwest.Our goal is simple:
+            precision, authenticity, and creativity, served with warmth.
           </motion.p>
-
+          <Image
+            src={line}
+            alt="line"
+            className=" max-w-4xl z-[10] -my-2  h-auto"
+          />
+          <motion.p
+            className={`text-[#FEFAF4]/80 -mb-4 capitalize max-w-2xl  text-balance z-[10] text-sm md:text-xl  ${Optima_regular.className}`}
+            initial={{ translateY: 70 }}
+            whileInView={{ translateY: 0 }}
+            transition={{ type: "spring", bounce: 0.1 }}
+          >
+            OUR CHEF
+          </motion.p>
+          <motion.p
+            className={`text-[#FEFAF4] capitalize max-w-2xl  text-balance z-[10] text-sm md:text-xl  ${Optima_regular.className}`}
+            initial={{ translateY: 70 }}
+            whileInView={{ translateY: 0 }}
+            transition={{ type: "spring", bounce: 0.1 }}
+          >
+            Our chef began his culinary journey at twenty-four, training under
+            Japanese chefs in Korea and building a strong foundation in
+            traditional Japanese technique.He has spent more than Every dish at
+            Wasabi is shaped by his lifelong discipline, experience, and
+            creative spirit.
+          </motion.p>
           <motion.div
-            className="flex flex-row justify-center z-[10] items-center gap-[7rem] mb-8 text-gray-200"
+            className="flex flex-row justify-center mb-8 z-[10] items-center gap-[7rem]  text-gray-200"
             initial={{ translateY: 70 }}
             whileInView={{ translateY: 0 }}
             transition={{ type: "spring", bounce: 0.1 }}
@@ -172,28 +197,17 @@ export const AboutAndBelief = ({ setCanShow }: any) => {
             {stats.map((stat, idx) => (
               <div
                 key={idx}
-                className={`flex items-center text-lg tracking-[0.2rem] z-[10]  gap-2 ${Optima_medium.className}`}
+                className={`flex items-center   z-[10]  gap-2 ${Optima_medium.className}`}
               >
                 <Image
                   className="w-[1.5rem] h-fit"
                   src={stat.icon}
                   alt={stat.alt}
                 />
-                <span className="text-sm mt-1">{stat.label}</span>
+                <span className=" mt-1">{stat.label}</span>
               </div>
             ))}
           </motion.div>
-
-          <motion.p
-            className={`text-[#FEFAF4] capitalize  z-[10] text-sm md:text-lg tracking-widest mt-2 ${notoSansFont.className}`}
-            initial={{ translateY: 70 }}
-            whileInView={{ translateY: 0 }}
-            transition={{ type: "spring", bounce: 0.1 }}
-          >
-            We're Not Just Serving Meals—We're Curating Moments
-            <br />
-            Of Indulgence, Artistry, And Unforgettable Taste.
-          </motion.p>
 
           <div className="w-full hidden lg:block">
             <Image src={aboutmenu} alt="foodimg" className="w-full h-fit" />

@@ -1,32 +1,32 @@
-'use client';
-import basil from '@/public/home/menu/basil.webp';
-import chesseCake from '@/public/home/menu/chesseCake.webp';
-import mochi from '@/public/home/menu/mochi.webp';
-import pumpkin from '@/public/home/menu/pumpkin.webp';
-import safron from '@/public/home/menu/safron.webp';
-import steak from '@/public/home/menu/steak.webp';
-import mainImg from '@/public/home/menu/mainImg.webp';
-import Image from 'next/image';
-import { forumFont, notoSansFont } from '@/app/utils/font';
-import { useEffect, useRef } from 'react';
-import { useInView, motion, useAnimation } from 'framer-motion';
-import { MenuMobile } from './MenuMobile';
+"use client";
+import basil from "@/public/home/menu/basil.webp";
+import chesseCake from "@/public/home/menu/chesseCake.webp";
+import mochi from "@/public/home/menu/mochi.webp";
+import pumpkin from "@/public/home/menu/pumpkin.webp";
+import safron from "@/public/home/menu/safron.webp";
+import steak from "@/public/home/menu/steak.webp";
+import mainImg from "@/public/home/menu/mainImg.webp";
+import Image from "next/image";
+import { forumFont, notoSansFont } from "@/app/utils/font";
+import { useEffect, useRef } from "react";
+import { useInView, motion, useAnimation } from "framer-motion";
+import { MenuMobile } from "./MenuMobile";
 
 const Menu = () => {
   // Example: separate as "Mains" and "Desserts"
   const mains = [
-    { src: basil, name: 'Basil' },
-    { src: pumpkin, name: 'Pumpkin' },
-    { src: safron, name: 'Safron' },
+    { src: basil, name: "Basil" },
+    { src: pumpkin, name: "Pumpkin" },
+    { src: safron, name: "Safron" },
   ];
 
   const desserts = [
-    { src: chesseCake, name: 'Chesse Cake' },
-    { src: mochi, name: 'Mochi' },
-    { src: steak, name: 'Steak' },
+    { src: chesseCake, name: "Chesse Cake" },
+    { src: mochi, name: "Mochi" },
+    { src: steak, name: "Steak" },
   ];
   const mainsRef = useRef<HTMLDivElement>(null);
-  const mainsInView = useInView(mainsRef, { margin: '-20% 0px -60% 0px' });
+  const mainsInView = useInView(mainsRef, { margin: "-20% 0px -60% 0px" });
 
   const mainsControls = useAnimation();
 
@@ -35,7 +35,7 @@ const Menu = () => {
   // Right (desserts)
   const dessertsRef = useRef<HTMLDivElement>(null);
   const dessertsInView = useInView(dessertsRef, {
-    margin: '-20% 0px -60% 0px',
+    margin: "-20% 0px -60% 0px",
   });
   const dessertsControls = useAnimation();
 
@@ -59,7 +59,7 @@ const Menu = () => {
             animate={mainsControls}
             initial={{ opacity: 1 }}
             className={`w-full flex flex-col gap-[5%] h-fit ${
-              mainsInView ? 'infinite-scroll-container' : ''
+              mainsInView ? "infinite-scroll-container" : ""
             }`}
           >
             {mains.map((e, index) => {
@@ -101,8 +101,8 @@ const Menu = () => {
             className={`uppercase  z-[20] text-center text-[60px] leading-[120%] mb-[-2%] text-[#E9DFCF] ${forumFont.className}  tracking-widest`}
           >
             BROWSE OUR <br />
-            CURATED MENU{' '}
-          </h1>{' '}
+            CURATED MENU{" "}
+          </h1>{" "}
           <div className="w-[45rem] aspect-[2.3/1] h-[20rem]  overflow-hidden  max-w-[80%]">
             <Image
               src={mainImg}
@@ -120,10 +120,10 @@ const Menu = () => {
               </p>
 
               <button
-                style={{ transition: '0.4s ease' }}
+                style={{ transition: "0.4s ease" }}
                 className={`${notoSansFont.className} px-[2.4rem] tracking-widest cursor-pointer bg-[#C0A078] hover:text-white text-black hover:bg-black border border-[#C0A078] hover:border-white py-[0.7rem] font-semibold rounded-full w-fit`}
               >
-                SEE MENU{' '}
+                SEE MENU{" "}
               </button>
             </div>
           </div>
@@ -141,7 +141,7 @@ const Menu = () => {
             animate={dessertsControls}
             initial={{ opacity: 1 }}
             className={`w-full flex flex-col gap-[5%] h-fit ${
-              dessertsInView ? 'Reverse_infinite-scroll-container' : ''
+              dessertsInView ? "Reverse_infinite-scroll-container" : ""
             }`}
           >
             {desserts.map((e, index) => {

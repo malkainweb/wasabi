@@ -15,11 +15,11 @@ const sixthItem = () => {
   return (
     <div className="w-full h-full text-white flex items-center justify-center gap-8">
       <motion.div
-        className="w-[90%] lg:w-[40%] mx-auto flex flex-col justify-center gap-y-7"
+        className="w-[90%] lg:w-[70%] mx-auto flex flex-col justify-center gap-y-7"
         layout
       >
         <motion.div
-          className="h-7 w-7 flex items-center justify-center mx-auto"
+          className="h-16 w-16 flex items-center justify-center mx-auto"
           initial={{ translateX: 80, opacity: 0.5 }}
           whileInView={{ translateX: 0, opacity: 1 }}
           transition={{ type: "spring", bounce: 0 }}
@@ -31,7 +31,7 @@ const sixthItem = () => {
           />
         </motion.div>
         <motion.p
-          className={`text-[20px] text-center font-extralight ${forumFont.className}`}
+          className={` text-xl text-balance leading-[125%] text-center font-extralight ${forumFont.className}`}
           initial={{ translateX: 80, opacity: 0.5 }}
           whileInView={{ translateX: 0, opacity: 1 }}
           transition={{
@@ -40,8 +40,11 @@ const sixthItem = () => {
             delay: 0.1,
           }}
         >
-          Discover dishes designed to delight the senses—crafted with precision,
-          inspired by tradition, and served with intention.
+          Our menu balances traditional Japanese staples with modern
+          Asian-inspired creations, including: Tom Yum Ramen, Japanese Ramen,
+          Wasabi-style Seafood, LinguineMiso Cod, Kabayaki, SteakJapanese-style
+          Halibut, Fish & Chips Chef-driven sushi programEvery dish reflects a
+          harmony of technique, culture, and innovation
         </motion.p>
         <motion.a
           href="/menu"
@@ -88,12 +91,12 @@ export const ImagesSlider = () => {
   const staticHeader = (
     <div className="text-center mt-28 mb-10 overflow-hidden">
       <motion.h3
-        className={`text-5xl ${forumFont.className}`}
+        className={`text-6xl ${forumFont.className}`}
         initial={{ translateY: -50, scale: 1.3 }}
         whileInView={{ translateY: 0, scale: 1 }}
         transition={{ delay: 0.1, stiffness: 70 }}
       >
-        BROWSE OUR <br /> CURATED MENU
+        THE FOOD
       </motion.h3>
     </div>
   );
@@ -246,16 +249,15 @@ export const ImagesSlider = () => {
 
   return (
     <>
-      <div className="w-full overflow-x-hidden hidden lg:block bg-white">
+      <div className="w-full overflow-x-hidden hidden lg:block ">
         {staticHeader}
       </div>
       <div className="relative w-full overflow-x-clip lg:hidden bg-black">
         <div className="w-full overflow-x-hidden h-fit lg:hidden relative z-20 bg-black  text-white">
           <h3
-            className={`text-4xl ${forumFont.className} text-center text-[#C0A078] my-12`}
+            className={`text-4xl ${forumFont.className} text-center text-[white] my-12`}
           >
-            {" "}
-            BROWSE OUR <br /> CURATED MENU
+            THE FOOD
           </h3>
         </div>
         <div className="relative h-[45vh] min-h-[20rem] flex">
@@ -312,7 +314,7 @@ export const ImagesSlider = () => {
             />
           </div>
         </div>
-        <div className="relative -top-[11vh] sm:-top-[2vh] -mb-6 min-h-[25rem] flex flex-col justify-evenly pt-2">
+        <div className="relative -top-[11vh] sm:-top-[2vh] -mb-6 min-h-[25rem] flex flex-col justify-evenly gap-10 pt-2">
           <div className="size-[4.8rem] flex items-center justify-center mx-auto">
             <Image
               src={cheers}
@@ -321,13 +323,14 @@ export const ImagesSlider = () => {
             />
           </div>
           <div
-            className={`text-lg text-center tracking-widest uppercase font-light text-[#FEFAF4] ${forumFont.className}`}
+            className={`text-lg text-center px-10 tracking-widest uppercase font-light text-[#FEFAF4] ${forumFont.className}`}
           >
-            Discover dishes designed to <br />
-            delight the senses—crafted
-            <br /> with precision, inspired by
-            <br />
-            tradition, and served with <br /> intention.
+            Our menu balances traditional Japanese staples with modern
+            Asian-inspired creations, including: Tom Yum Ramen, Japanese Ramen,
+            Wasabi-style Seafood, LinguineMiso Cod, Kabayaki,
+            SteakJapanese-style Halibut, Fish & Chips Chef-driven sushi
+            programEvery dish reflects a harmony of technique, culture, and
+            innovation
           </div>
           <button
             className={`font-medium text-nowrap px-5 py-3 text-black rounded-4xl text-center min-w-[10rem] mx-auto ${Optima_bold.className}`}

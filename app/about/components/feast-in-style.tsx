@@ -1,46 +1,62 @@
-import { Forum, Noto_Sans } from "next/font/google";
-// import { twMerge } from 'tailwind-merge';
 import Image from "next/image";
-
 import bgImage from "@/public/about/feasttable.webp";
 import {
   forumFont,
   notoSansFont,
-  Optima_bold,
   Optima_medium,
+  Optima_regular,
 } from "@/app/utils/font";
-import Link from "next/link";
 
 export const FeastInStyle = () => {
   return (
-    <div className=" h-[100vh] overflow-hidden md:h-[110vh]  relative w-full">
+    <div
+      className={`h-[100vh] md:h-[110vh] text-white  text-center  text-balance relative w-full overflow-hidden ${Optima_regular.className}`}
+    >
+      {/* Background Image */}
       <Image
         src={bgImage}
-        alt="Feast table"
-        className="w-full object-center h-full object-cover"
-        style={{ filter: "brightness(0.6)" }}
+        alt="The Space"
+        className="w-full h-full object-cover"
+        style={{ filter: "brightness(0.45)" }}
       />
-      <div className="absolute inset-0 z-20 bg-transparent h-full w-full flex items-center justify-center">
-        <div className="w-full lg:w-[60%] min-w-[300px] aspect-square mx-auto flex flex-col items-center justify-center gap-5">
-          <h3
-            className={`text-[#FEFAF4] text-[3rem] md:text-7xl text-center tracking-wider w-full ${forumFont.className}`}
-          >
-            FEAST IN <br className="hidden lg:block" />
-            STYLE
-          </h3>
-          <p
-            className={`text-[#FEFAF4] tracking-widest font-light text-lg -mt-5 lg:mt-0 ${notoSansFont.className}`}
-          >
-            Taste The Wasabi Experience
+
+      {/* CONTENT */}
+      <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center px-4">
+        {/* MAIN TITLE */}
+        <h3 className={`  text-5xl md:text-7xl  mb-4 ${forumFont.className}`}>
+          THE SPACE
+        </h3>
+
+        {/* SUBTITLE TEXT */}
+        <p className={` max-w-2xl  mb-6 font-light ${notoSansFont.className}`}>
+          Located In The Sun Rivers Community Of Kamloops, Beside Big Horn Golf
+          Course. Our Restaurant Features:
+        </p>
+
+        {/* CENTER BOX */}
+        <div
+          className="
+          bg-[#4D4E4D99]/60 
+          backdrop-blur-2xl 
+          rounded-3xl 
+          p-6
+          max-w-md 
+          w-full
+        "
+        >
+          {/* FEATURES TITLE */}
+          <p className={` opacity-50 mb-4 ${Optima_medium.className}`}>
+            FEATURES
           </p>
 
-          <a
-            href="tel:+12509841632"
-            style={{ transition: "0.4s ease" }}
-            className={`${Optima_bold.className} bg-[#C0A078] border-white/30 hover:border-[#C0A078] border text-black px-[2rem] tracking-widest cursor-pointer hover:bg-white hover:text-black py-[0.6rem]  rounded-full w-fit`}
-          >
-            RESERVE{" "}
-          </a>
+          {/* FEATURES LIST */}
+          <div className="space-y-1 md:space-y-2 text-sm font-light ">
+            <p>55-Seat Licensed Space (60+ Physical Seating)</p>
+            <p>Dedicated Sushi Bar</p>
+            <p>Full Drink Bar</p>
+            <p>Warm And Modern Interiors</p>
+            <p>Designed For Comfort And Connection</p>
+          </div>
         </div>
       </div>
     </div>
