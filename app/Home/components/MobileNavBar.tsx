@@ -29,7 +29,7 @@ export const MobileNavBar = ({ items, onClose, onStartAnime }: Props) => {
     <div
       style={{ transition: "0.5s ease" }}
       onClick={handleClose}
-      className={`md:hidden fixed inset-0 z-50 flex items-end ${
+      className={`md:hidden fixed inset-0 z-[99999] flex items-end ${
         startAnime ? " bg-black/50  backdrop-blur-xl" : ""
       } justify-center `}
     >
