@@ -93,7 +93,7 @@ const GeneralHeader = ({ canShow }: any) => {
 
       {/* Mobile nav */}
       <nav
-        className="md:hidden  fixed top-[2rem] left-1/2 -translate-x-1/2 z-50 w-[92%]"
+        className="md:hidden z-[99999]  fixed top-[2rem] left-1/2 -translate-x-1/2 z-50 w-[92%]"
         aria-label="Mobile navigation"
       >
         <div className="flex border border-white/30 items-center justify-between rounded-full px-4 py-2 bg-[#4D4E4D]/10  backdrop-blur-lg">

@@ -8,6 +8,7 @@ import { Timeline } from "./components/timeline";
 import { AboutAndBeliefMobile } from "./components/about-belief-mobile-only";
 import GeneralHeader from "../Components/GeneralHeader";
 import Team from "./components/aboutTeam";
+import { NewAboutBelief } from "./components/NewAboutBelief";
 
 const Page = () => {
   const [canShow, setCanShow] = useState(false);
@@ -15,8 +16,9 @@ const Page = () => {
   return (
     <div className="w-full ">
       <GeneralHeader canShow={canShow} />
-      <AboutAndBelief setCanShow={setCanShow} />
-      <AboutAndBeliefMobile setCanShow={setCanShow} />
+      {/* <AboutAndBelief setCanShow={setCanShow} />
+      <AboutAndBeliefMobile setCanShow={setCanShow} /> */}
+      <NewAboutBelief />
       {/* <Timeline /> */}
       <Team />
       <ImagesSlider />
