@@ -48,7 +48,8 @@
     "react-select": "^5.10.1",
     "react-time-picker": "^7.0.0",
     "tailwind": "^4.0.0",
-    "uuid": "^11.1.0"
+    "uuid": "^11.1.0",
+    "tailwindcss": "^4"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -62,7 +63,6 @@
     "i": "^0.3.7",
     "npm": "^11.3.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
