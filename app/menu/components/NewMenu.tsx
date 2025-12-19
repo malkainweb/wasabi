@@ -36,10 +36,10 @@ const NewMenu = () => {
 
   return (
     <>
-      <div className="md:w-[100rem] flex flex-col gap-12 min-h-40 w-full mx-auto  md:px-0 px-3   pb-20 pt-32 max-w-[96%]">
-        <div className="w-full lg:flex-row justify-center lg:gap-8 gap-7  grid md:grid-cols-3 items-center">
+      <div className="md:w-[100rem] flex flex-col gap-12 min-h-40 w-full mx-auto  md:px-0 px-3   pb-20 pt-32 md:max-w-[96%]">
+        <div className="w-full lg:flex-row justify-center  lg:gap-6 gap-7  grid md:grid-cols-3 items-center">
           {menuImages.map((image, index) => (
-            <div key={index}>
+            <div key={index} className="w-full ">
               <Image
                 src={image.src}
                 alt={image.alt}
@@ -50,7 +50,7 @@ const NewMenu = () => {
           ))}
         </div>
         <hr />
-        <div className="w-full lg:flex-row justify-center lg:gap-8 gap-7  grid md:grid-cols-3 items-center">
+        <div className="w-full lg:flex-row justify-center lg:gap-6 gap-7  grid md:grid-cols-3 items-center">
           {menuImages2.map((image, index) => (
             <div key={index}>
               <Image

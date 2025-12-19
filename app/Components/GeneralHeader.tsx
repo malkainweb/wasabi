@@ -109,13 +109,15 @@ const GeneralHeader = ({ canShow }: any) => {
               <i className="bi bi-list text-xl text-[#c0a078]" />
             </span>
           </button>
-          <Image
-            src={logo}
-            alt="Wasabi"
-            className="h-12 w-auto select-none"
-            priority
-            draggable={false}
-          />
+          <Link href={"/"} className="">
+            <Image
+              src={logo}
+              alt="Wasabi"
+              className="h-12 w-auto select-none"
+              priority
+              draggable={false}
+            />
+          </Link>
         </div>
       </nav>
       {canShowMobileNav && (
