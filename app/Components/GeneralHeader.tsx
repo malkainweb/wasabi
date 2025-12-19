@@ -83,7 +83,7 @@ const GeneralHeader = ({ canShow }: any) => {
           </div>
           {/* Right: CTA */}
           <a
-            href="tel:+12509841632"
+            href="https://www.opentable.ca/booking/restref/availability?lang=en-CA&correlationId=5bc9fb52-82e0-4ea6-bab1-20314e610618&restRef=1487164&otSource=Restaurant%20website"
             className={`rounded-full px-6 py-3 text-base font-normal bg-[#C0A078] text-black uppercase  shadow hover:bg-[#b99c71] transition ${notoSansFont.className}  tracking-widest`}
           >
             Book a reservation

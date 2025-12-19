@@ -305,7 +305,7 @@ const HomeRecipes = () => {
                   Reserve
                 </h2>
                 <a
-                  href="tel:+12509841632"
+                  href="https://www.opentable.ca/booking/restref/availability?lang=en-CA&correlationId=5bc9fb52-82e0-4ea6-bab1-20314e610618&restRef=1487164&otSource=Restaurant%20website"
                   style={{ transition: "0.6s ease" }}
                   className={`${notoSansFont.className}   group-hover:opacity-100 opacity-0  absolute top-[50%] translate-x-[-50%]  left-[50%] translate-y-[-50%] px-[1rem] tracking-widest cursor-pointer bg-[#C0A078] hover:text-white text-black hover:bg-black border border-[#C0A078] hover:border-white py-[0.7rem] font-semibold rounded-full w-fit`}
                 >

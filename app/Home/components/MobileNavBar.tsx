@@ -72,7 +72,7 @@ export const MobileNavBar = ({ items, onClose, onStartAnime }: Props) => {
         {/* CTA */}
         <div className="mt-3 px-2">
           <Link
-            href="/reserve"
+            href="https://www.opentable.ca/booking/restref/availability?lang=en-CA&correlationId=5bc9fb52-82e0-4ea6-bab1-20314e610618&restRef=1487164&otSource=Restaurant%20website"
             onClick={handleClose}
             className="block w-full rounded-full bg-[#C0A078]
                        text-center text-black font-social font-semibold uppercase

@@ -25,7 +25,7 @@ export default function HomeRecipesMobile() {
       {/* CTA */}
       <div className="mt-3 flex justify-center">
         <a
-          href="tel:+12509841632"
+          href="https://www.opentable.ca/booking/restref/availability?lang=en-CA&correlationId=5bc9fb52-82e0-4ea6-bab1-20314e610618&restRef=1487164&otSource=Restaurant%20website"
           className={`${notoSansFont.className} rounded-full bg-[#C0A078] px-6 py-3 text-[#1B140D] font-semibold tracking-[0.12em] text-[0.94rem] hover:brightness-95 transition`}
         >
           RESERVE A TABLE
