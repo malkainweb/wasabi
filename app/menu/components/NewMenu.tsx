@@ -43,7 +43,6 @@ const NewMenu = () => {
               <Image
                 src={image.src}
                 alt={image.alt}
-                width={200}
                 className="w-full max-w-full h-auto "
               />
             </div>
@@ -56,7 +55,6 @@ const NewMenu = () => {
               <Image
                 src={image.src}
                 alt={image.alt}
-                width={200}
                 className="w-full max-w-full h-auto "
               />
             </div>
