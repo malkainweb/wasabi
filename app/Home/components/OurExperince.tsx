@@ -194,58 +194,47 @@ const OurExperince = () => {
               <div
                 className={`bg-[black]/40 rounded-[30px]  backdrop-blur-md z-[100]`}
               >
-                <div className="relative  z-10 flex pb-[1rem] pt-[1rem] flex-col gap-2">
+                <div className="relative z-10 flex pb-[1rem] pt-[1rem] flex-col gap-2">
                   {/* Title */}
                   <div
-                    className={`text-lg md:text-xl  md:px-8 font-medium tracking-widest py-[0.3rem] uppercase ${forumFont.className}`}
+                    className={`text-lg md:text-xl md:px-8 font-medium tracking-widest py-[0.3rem] uppercase ${forumFont.className}`}
                   >
                     Canada
                   </div>
+
                   {/* Divider */}
                   <div className="border-b border-[white]/20 mb-4"></div>
 
                   {/* Address */}
-                  <div className="  md:px-8  font-normal mb-2  tracking-[0.25rem]">
+                  <div className="md:px-8 font-normal mb-2 tracking-[0.25rem]">
                     <p className={`${Optima_regular.className}`}>
                       102-1020 Talasa way,
                       <br />
-                      Kamloops BC V2H 03C.
+                      Kamloops BC V2H 03C
                     </p>
                   </div>
 
                   {/* Details Row */}
                   <div
-                    className={`flex flex-col md:px-8  text-sm tracking-[0.2rem] gap-2 text-[white] mb-2 ${notoSansFont.className}`}
+                    className={`flex flex-col md:px-8 text-sm tracking-[0.2rem] gap-2 text-[white] mb-2 ${notoSansFont.className}`}
                   >
                     <div className="flex items-center gap-3">
-                      <span className=" text-[white]/60">
+                      <span className="text-[white]/60">
                         Hours of Operation
                       </span>
-                      <span className="  border-b border-[white]/50 w-[6rem] mx-2"></span>
-                      <span className="text-[white]/80  font-normal">
-                        Mon - Sat
+                      <span className="border-b border-[white]/50 flex-1 mx-2"></span>
+                      <span className="text-[white]/80 font-normal whitespace-nowrap">
+                        11:30 AM – 9:00 PM
                       </span>
                     </div>
                     <div className="flex items-center gap-3">
-                      <span className=" text-[white]/60">
-                        Sunday - Thursday
-                      </span>
-                      <span className=" border-b border-[white]/50 w-[6rem] mx-2"></span>
+                      <span className="text-[white]/60">Open</span>
+                      <span className="border-b border-[white]/50 flex-1 mx-2"></span>
                       <span className="text-[white]/80 font-normal">
-                        11:00 AM - 9:00 PM
-                      </span>
-                    </div>
-                    <div className="flex items-center gap-3">
-                      <span className=" text-[white]/60">
-                        Friday - Saturday
-                      </span>
-                      <span className=" border-b border-[white]/50 w-[6rem] mx-2"></span>
-                      <span className="text-[white]/80 font-normal">
-                        11:00 AM - 11:00 PM
+                        Seven days a week
                       </span>
                     </div>
                   </div>
-                  {/* Divider */}
                 </div>
               </div>
             </motion.div>

@@ -18,8 +18,8 @@ export default function MobileLocationCard({
   city = "NEW YORK",
   addressLines = ["102-1020 Talasa way, ", "Kamloops BC V2H 03C"],
   openingDays = "7 days a week",
-  openingTime2 = "11:00 AM - 9:00 PM",
-  openingTime = "11:00 AM - 11:00 PM",
+  openingTime2 = "11:30 AM - 9:00 PM",
+  openingTime = "11:30 AM - 11:00 PM",
   className = "",
 }: Props) {
   return (
