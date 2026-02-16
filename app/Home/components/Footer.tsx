@@ -4,8 +4,13 @@ import Link from "next/link";
 import footerLogo from "@/public/footerLogo.webp";
 import { forumFont, notoSansFont, Optima_regular } from "@/app/utils/font";
 import Image from "next/image";
+import { FooterData } from "@/app/sanity/lib/types";
 
-const Footer = () => {
+interface FooterProps {
+  footerData: FooterData | null;
+}
+
+const Footer = ({ footerData }: FooterProps) => {
   const navLinks = [
     { label: "HOME", href: "/" },
     { label: "ABOUT", href: "/about" },
@@ -18,14 +23,14 @@ const Footer = () => {
 
   const iconLinks = [
     {
-      href: "tel:+1-250-984-1632",
+      href: `tel:${footerData?.phoneNumber || "+1-250-984-1632"}`,
       label: "Phone",
       target: "_blank",
       rel: "noopener noreferrer",
       iconClass: "bi bi-telephone",
     },
     {
-      href: "mailto:Info@wasabimodernkitchen.com",
+      href: `mailto:${footerData?.email || "Info@wasabimodernkitchen.com"}`,
       label: "Email",
       rel: "noopener noreferrer",
       target: "_blank",
@@ -84,7 +89,7 @@ const Footer = () => {
               <div
                 className={`text-lg md:text-xl md:px-8 font-medium tracking-widest mb-3 uppercase ${forumFont.className}`}
               >
-                Canada
+                {footerData?.locationTitle || "Canada"}
               </div>
 
               {/* Divider */}
@@ -93,9 +98,9 @@ const Footer = () => {
               {/* Address */}
               <div className="md:px-8 font-normal mb-2 tracking-[0.25rem]">
                 <p className={`${Optima_regular.className}`}>
-                  102-1020 Talasa way,
+                  {footerData?.addressLine1 || "102-1020 Talasa way,"}
                   <br />
-                  Kamloops BC V2H 03C
+                  {footerData?.addressLine2 || "Kamloops BC V2H 03C"}
                 </p>
               </div>
 
@@ -104,18 +109,22 @@ const Footer = () => {
                 className={`flex flex-col md:px-8 text-sm tracking-[0.2rem] gap-2 text-[#b2afab] mb-2 ${notoSansFont.className}`}
               >
                 <div className="flex items-center gap-3">
-                  <span className="text-[#C0A079]/50">Hours of Operation</span>
+                  <span className="text-[#C0A079]/50">
+                    {footerData?.hoursLabel || "Hours of Operation"}
+                  </span>
                   <span className="flex-1 border-b border-[white]/10 mx-2"></span>
                   <span className="text-[#C0A079]/80 font-normal whitespace-nowrap">
-                    11:30 AM – 9:00 PM
+                    {footerData?.operatingHours || "11:30 AM – 9:00 PM"}
                   </span>
                 </div>
 
                 <div className="flex items-center gap-3">
-                  <span className="text-[#C0A079]/50">Open</span>
+                  <span className="text-[#C0A079]/50">
+                    {footerData?.openDaysLabel || "Open"}
+                  </span>
                   <span className="flex-1 border-b border-[white]/10 mx-2"></span>
                   <span className="text-[#C0A079]/80 font-normal">
-                    Seven days a week
+                    {footerData?.openDays || "Seven days a week"}
                   </span>
                 </div>
               </div>
@@ -148,7 +157,8 @@ const Footer = () => {
           </div>
 
           <span className="text-[#C0A079] text-sm">
-            © {currentYear} Wasabi. All rights reserved.
+            © {currentYear}{" "}
+            {footerData?.copyrightText || "Wasabi. All rights reserved."}
           </span>
 
           <a
