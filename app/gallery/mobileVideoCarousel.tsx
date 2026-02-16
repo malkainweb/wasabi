@@ -1,56 +1,18 @@
 "use client";
 
 import Image, { StaticImageData } from "next/image";
-import { Play } from "lucide-react";
 import { forumFont, notoSansFont } from "@/app/utils/font";
 import React from "react";
 
 type VideoItem = {
   id?: string | number;
-  title?: string; // Make optional
-  author?: string; // Make optional
-  thumbnail: StaticImageData | string;
+  title?: string;
+  author?: string;
+  thumbnail: string; // Changed from StaticImageData | string to just string
+  alt?: string;
   href?: string;
   onClick?: () => void;
 };
-// export const galleryImagesMobile: VideoItem[] = [
-//   {
-//     thumbnail: firstImage,
-//     title: "STACYS WEDDING PROPOSAL",
-//     author: "by kelvin adams",
-//     href: "#",
-//   },
-//   {
-//     thumbnail: secondImage,
-//     title: "STACYS WEDDING PROPOSAL",
-//     author: "by kelvin adams",
-//     href: "#",
-//   },
-//   {
-//     thumbnail: thirdImage,
-//     title: "STACYS WEDDING PROPOSAL",
-//     author: "by kelvin adams",
-//     href: "#",
-//   },
-//   {
-//     thumbnail: fourthImage,
-//     title: "STACYS WEDDING PROPOSAL",
-//     author: "by kelvin adams",
-//     href: "#",
-//   },
-//   {
-//     thumbnail: fifthImage,
-//     title: "STACYS WEDDING PROPOSAL",
-//     author: "by kelvin adams",
-//     href: "#",
-//   },
-//   {
-//     thumbnail: sixthImage,
-//     title: "STACYS WEDDING PROPOSAL",
-//     author: "by kelvin adams",
-//     href: "#",
-//   },
-// ];
 
 function VideoCard({ item }: { item: VideoItem }) {
   const handleClick = () => {
@@ -67,9 +29,10 @@ function VideoCard({ item }: { item: VideoItem }) {
       <div className="relative overflow-hidden rounded-3xl aspect-[1/1.3]">
         <Image
           src={item.thumbnail}
-          alt={item.title || "Gallery image"} // Fallback alt text
-          fill
-          className="object-cover"
+          alt={item.alt || item.title || "Gallery image"}
+          height={200}
+          width={200}
+          className="object-cover w-full h-full"
         />
       </div>
     </div>
@@ -86,13 +49,11 @@ export default function VideoGallery({
   showdivider?: Boolean;
 }) {
   return (
-    <section className={`w-full  ${className}`}>
+    <section className={`w-full ${className}`}>
       {/* optional divider to match screenshot */}
-      {showdivider && (
-        <div className="mx-4 mb-12  -mt-4 h-[1px] bg-[#E9DECA]" />
-      )}
+      {showdivider && <div className="mx-4 mb-12 -mt-4 h-[1px] bg-[#E9DECA]" />}
 
-      <div className="px-3  mb-10">
+      <div className="px-3 mb-10">
         <div className="grid grid-cols-2 gap-3 sm:gap-4">
           {items.map((item, i) => (
             <VideoCard key={item.id ?? i} item={item} />

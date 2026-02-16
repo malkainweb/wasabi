@@ -14,18 +14,23 @@ import img_3 from "@/public/new_menu/3.webp";
 import img_4 from "@/public/new_menu/4.webp";
 import img_5 from "@/public/new_menu/5.webp";
 import img_6 from "@/public/new_menu/6.webp";
+import { MenuGalleryData } from "@/app/sanity/lib/types";
+import { urlFor } from "@/app/sanity/lib/image";
 
-const NewMenu = () => {
-  const menuImages = [
+interface NewMenuProps {
+  menuGalleryData: MenuGalleryData | null;
+}
+
+const NewMenu = ({ menuGalleryData }: NewMenuProps) => {
+  const defaultMainMenuImages = [
     { src: cover, alt: "Menu Cover" },
     { src: front_1, alt: "Menu Front Page 1" },
     { src: front_2, alt: "Menu Front Page 2" },
-
     { src: back_1, alt: "Menu Back Page 1" },
     { src: back_2, alt: "Menu Back Page 2" },
   ];
-  const menuImages2 = [
-    // Inner menu pages (mapped from 1.webp → 6.webp)
+
+  const defaultInnerMenuImages = [
     { src: img_1, alt: "Menu Inner Page 1" },
     { src: img_2, alt: "Menu Inner Page 2" },
     { src: img_3, alt: "Menu Inner Page 3" },
@@ -34,31 +39,51 @@ const NewMenu = () => {
     { src: img_6, alt: "Menu Inner Page 6" },
   ];
 
+  const menuImages = menuGalleryData?.mainMenuImages
+    ? menuGalleryData.mainMenuImages.map((img) => ({
+        src: urlFor(img).url(),
+        alt: img.alt,
+      }))
+    : defaultMainMenuImages;
+
+  const menuImages2 = menuGalleryData?.innerMenuImages
+    ? menuGalleryData.innerMenuImages.map((img) => ({
+        src: urlFor(img).url(),
+        alt: img.alt,
+      }))
+    : defaultInnerMenuImages;
+
   return (
     <>
-      <div className="md:w-[100rem] flex flex-col gap-12 min-h-40 w-full mx-auto  md:px-0 px-3   pb-20 pt-32 md:max-w-[96%]">
-        <div className="w-full lg:flex-row justify-center  lg:gap-6 gap-7  grid md:grid-cols-3 items-center">
+      <div className="md:w-[100rem] flex flex-col gap-12 min-h-40 w-full mx-auto md:px-0 px-3 pb-20 pt-32 md:max-w-[96%]">
+        <div className="w-full lg:flex-row justify-center lg:gap-6 gap-7 grid md:grid-cols-3 items-center">
           {menuImages.map((image, index) => (
-            <div key={index} className="w-full ">
+            <div key={index} className="w-full">
               <Image
                 src={image.src}
                 alt={image.alt}
-                className="w-full max-w-full h-auto "
+                width={800}
+                height={1000}
+                className="w-full max-w-full h-auto"
+                quality={85}
               />
             </div>
           ))}
         </div>
         <hr />
-        <div className="w-full lg:flex-row justify-center lg:gap-6 gap-7  grid md:grid-cols-3 items-center">
+        <div className="w-full lg:flex-row justify-center lg:gap-6 gap-7 grid md:grid-cols-3 items-center">
           {menuImages2.map((image, index) => (
             <div key={index}>
               <Image
                 src={image.src}
                 alt={image.alt}
-                className="w-full max-w-full h-auto "
+                width={800}
+                height={1000}
+                className="w-full max-w-full h-auto"
+                quality={85}
               />
             </div>
-          ))}{" "}
+          ))}
         </div>
       </div>
     </>

@@ -11,65 +11,15 @@ import thirdImage from "@/public/about//slide3.webp";
 import fourthImage from "@/public/about/slide4.webp";
 import fifthImage from "@/public/about/slide5.webp";
 import { forumFont, notoSansFont, Optima_bold } from "@/app/utils/font";
-const sixthItem = () => {
-  return (
-    <div className="w-full h-full text-white flex items-center justify-center gap-8">
-      <motion.div
-        className="w-[90%] lg:w-[70%] mx-auto flex flex-col justify-center gap-y-7"
-        layout
-      >
-        <motion.div
-          className="h-16 w-16 flex items-center justify-center mx-auto"
-          initial={{ translateX: 80, opacity: 0.5 }}
-          whileInView={{ translateX: 0, opacity: 1 }}
-          transition={{ type: "spring", bounce: 0 }}
-        >
-          <Image
-            src={cheers}
-            alt="cheers"
-            className="h-full w-full object-cover"
-          />
-        </motion.div>
-        <motion.p
-          className={` text-xl text-balance leading-[125%] text-center font-extralight ${forumFont.className}`}
-          initial={{ translateX: 80, opacity: 0.5 }}
-          whileInView={{ translateX: 0, opacity: 1 }}
-          transition={{
-            type: "spring",
-            bounce: 0,
-            delay: 0.1,
-          }}
-        >
-          Our menu balances traditional Japanese staples with modern
-          Asian-inspired creations, including: Tom Yum Ramen, Japanese Ramen,
-          Wasabi-style Seafood, LinguineMiso Cod, Kabayaki, SteakJapanese-style
-          Halibut, Fish & Chips Chef-driven sushi programEvery dish reflects a
-          harmony of technique, culture, and innovation
-        </motion.p>
-        <motion.a
-          href="/menu"
-          initial={{ translateX: 80, opacity: 0.5 }}
-          whileInView={{ translateX: 0, opacity: 1 }}
-          transition={{
-            type: "spring",
-            bounce: 0,
+import { ImageSliderData } from "@/app/sanity/lib/types";
+import { urlFor } from "@/app/sanity/lib/image";
 
-            delay: 0.3,
-          }}
-          className={`text-sm text-nowrap px-6 py-3 text-black rounded-3xl text-center  mx-auto ${notoSansFont.className}`}
-          style={{ backgroundColor: "#C0A078" }}
-        >
-          SEE MENU
-        </motion.a>
-      </motion.div>
-    </div>
-  );
-};
+interface ImagesSliderProps {
+  imageSliderData: ImageSliderData | null;
+}
 
 const CARD_COUNT = 6;
-
 const STACK_MARGIN = 32;
-
 const cardColors = [
   "black",
   "black",
@@ -80,13 +30,80 @@ const cardColors = [
   "black",
 ];
 
-export const ImagesSlider = () => {
+export const ImagesSlider = ({ imageSliderData }: ImagesSliderProps) => {
   const parentRef = useRef<HTMLDivElement>(null);
   const [cardWidths, setCardWidths] = useState<number[]>([]);
   const [totalWidth, setTotalWidth] = useState(0);
   const [viewportWidth, setViewportWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1920
   );
+
+  const slideImages = imageSliderData?.slides
+    ? imageSliderData.slides.map((slide) => urlFor(slide).url())
+    : [
+        firstImage.src,
+        secondImage.src,
+        thirdImage.src,
+        fourthImage.src,
+        fifthImage.src,
+      ];
+
+  const cheersIconUrl = imageSliderData?.cheersIcon
+    ? urlFor(imageSliderData.cheersIcon).url()
+    : cheers.src;
+
+  const sixthItem = () => {
+    return (
+      <div className="w-full h-full text-white flex items-center justify-center gap-8">
+        <motion.div
+          className="w-[90%] lg:w-[60%] mx-auto flex flex-col justify-center gap-y-7"
+          layout
+        >
+          <motion.div
+            className="h-16 w-16 flex items-center justify-center mx-auto"
+            initial={{ translateX: 80, opacity: 0.5 }}
+            whileInView={{ translateX: 0, opacity: 1 }}
+            transition={{ type: "spring", bounce: 0 }}
+          >
+            <Image
+              src={cheersIconUrl}
+              alt="cheers"
+              width={64}
+              height={64}
+              className="h-full w-full object-cover"
+            />
+          </motion.div>
+          <motion.p
+            className={`text-xl text-balance max-w-md leading-[125%] text-center font-extralight ${forumFont.className}`}
+            initial={{ translateX: 80, opacity: 0.5 }}
+            whileInView={{ translateX: 0, opacity: 1 }}
+            transition={{
+              type: "spring",
+              bounce: 0,
+              delay: 0.1,
+            }}
+          >
+            {imageSliderData?.description ||
+              "Our menu balances traditional Japanese staples with modern Asian-inspired creations..."}
+          </motion.p>
+          <motion.a
+            href={imageSliderData?.buttonLink || "/menu"}
+            initial={{ translateX: 80, opacity: 0.5 }}
+            whileInView={{ translateX: 0, opacity: 1 }}
+            transition={{
+              type: "spring",
+              bounce: 0,
+              delay: 0.3,
+            }}
+            className={`text-sm text-nowrap px-6 py-3 text-black rounded-3xl text-center mx-auto ${notoSansFont.className}`}
+            style={{ backgroundColor: "#C0A078" }}
+          >
+            {imageSliderData?.buttonText || "SEE MENU"}
+          </motion.a>
+        </motion.div>
+      </div>
+    );
+  };
 
   const staticHeader = (
     <div className="text-center mt-28 mb-10 overflow-hidden">
@@ -96,7 +113,7 @@ export const ImagesSlider = () => {
         whileInView={{ translateY: 0, scale: 1 }}
         transition={{ delay: 0.1, stiffness: 70 }}
       >
-        THE FOOD
+        {imageSliderData?.sectionTitle || "THE FOOD"}
       </motion.h3>
     </div>
   );
@@ -132,7 +149,6 @@ export const ImagesSlider = () => {
     offset: ["start start", "end end"],
   });
 
-  // For each card, calculate its own translateX
   let lefts: number[] = [];
   let acc = 0;
   for (let i = 0; i < CARD_COUNT; i++) {
@@ -155,7 +171,6 @@ export const ImagesSlider = () => {
     let marginLeft = 0;
     let marginRight = 0;
 
-    // For the last card, add marginRight when stuck
     const translateX = useTransform(scrollPx, (v) => {
       const scrolledLeft = cardLeft - v;
       if (scrolledLeft <= (i === 0 ? 0 : i * STACK_MARGIN)) {
@@ -204,22 +219,11 @@ export const ImagesSlider = () => {
         {i < CARD_COUNT - 1 ? (
           <>
             <Image
-              src={
-                i === 0
-                  ? firstImage.src
-                  : i === 1
-                  ? secondImage.src
-                  : i === 2
-                  ? thirdImage.src
-                  : i === 3
-                  ? fourthImage.src
-                  : i === 4
-                  ? fifthImage.src
-                  : ""
-              }
+              src={slideImages[i]}
               alt={`Card ${i + 1}`}
-              width={1000}
-              height={1000}
+              width={250}
+              height={250}
+              loading="eager"
               style={{
                 position: "absolute",
                 top: 0,
@@ -249,7 +253,7 @@ export const ImagesSlider = () => {
 
   return (
     <>
-      <div className="w-full overflow-x-hidden hidden lg:block ">
+      <div className="w-full  overflow-x-hidden hidden lg:block ">
         {staticHeader}
       </div>
       <div className="relative w-full overflow-x-clip lg:hidden bg-black">
@@ -257,58 +261,56 @@ export const ImagesSlider = () => {
           <h3
             className={`text-4xl ${forumFont.className} text-center text-[white] my-12`}
           >
-            THE FOOD
+            {imageSliderData?.sectionTitle || "THE FOOD"}
           </h3>
         </div>
         <div className="relative h-[45vh] min-h-[20rem] flex">
-          <div
-            // variants={imageUpVariant}
-            className="absolute left-[-35%] w-[45%] rotate-[-30deg] top-[20vw] min-w-[13rem] aspect-[1/1.15] overflow-hidden"
-          >
-            <img
-              src={firstImage.src}
-              alt=""
+          <div className="absolute left-[-35%] w-[45%] rotate-[-30deg] top-[20vw] min-w-[13rem] aspect-[1/1.15] overflow-hidden">
+            <Image
+              src={slideImages[0]}
+              alt={`Card `}
+              width={250}
+              height={250}
               className="h-full w-full object-cover"
               loading="lazy"
             />
           </div>
-          <div
-            // variants={imageUpVariant}
-            className="absolute left-[4%] top-[5%] rotate-[-15deg] z-10 w-[45%] min-w-[13rem] aspect-[1/1.15] overflow-hidden"
-          >
-            <img
-              src={secondImage.src}
-              alt=""
+          <div className="absolute left-[4%] top-[5%] rotate-[-15deg] z-10 w-[45%] min-w-[13rem] aspect-[1/1.15] overflow-hidden">
+            <Image
+              src={slideImages[1]}
+              alt={`Card `}
+              width={250}
+              height={250}
               className="h-full w-full object-cover"
               loading="lazy"
             />
           </div>
-          <div
-            //center
-            className="absolute inset-x-0 mx-auto  z-20 w-[45%] min-w-[13rem] aspect-[1/1.15] overflow-hidden"
-          >
-            <img
-              src={thirdImage.src}
-              alt=""
+          <div className="absolute inset-x-0 mx-auto  z-20 w-[45%] min-w-[13rem] aspect-[1/1.15] overflow-hidden">
+            <Image
+              src={slideImages[2]}
+              alt={`Card `}
+              width={250}
+              height={250}
               className="h-full w-full object-cover"
               loading="lazy"
             />
           </div>
           <div className="absolute right-[4%] top-[5%] w-[45%]  rotate-[15deg] min-w-[13rem] aspect-[1/1.15] overflow-hidden">
-            <img
-              src={fourthImage.src}
-              alt=""
+            <Image
+              src={slideImages[3]}
+              alt={`Card `}
+              width={250}
+              height={250}
               className="h-full w-full object-cover"
               loading="lazy"
             />
           </div>
-          <div
-            // variants={imageUpVariant}
-            className="absolute right-[-35%] z-10 top-[20vw] w-[45%] rotate-[30deg] min-w-[13rem] aspect-[1/1.15] overflow-hidden"
-          >
-            <img
-              src={fifthImage.src}
-              alt=""
+          <div className="absolute right-[-35%] z-10 top-[20vw] w-[45%] rotate-[30deg] min-w-[13rem] aspect-[1/1.15] overflow-hidden">
+            <Image
+              src={slideImages[4]}
+              alt={`Card `}
+              width={250}
+              height={250}
               className="h-full w-full object-cover"
               loading="lazy"
             />
@@ -317,31 +319,29 @@ export const ImagesSlider = () => {
         <div className="relative -top-[11vh] sm:-top-[2vh] -mb-6 min-h-[25rem] flex flex-col justify-evenly gap-10 pt-2">
           <div className="size-[4.8rem] flex items-center justify-center mx-auto">
             <Image
-              src={cheers}
+              src={cheersIconUrl}
               alt="cheers"
+              width={80}
+              height={80}
               className="h-full w-full object-cover text-[#FEFAF4]"
             />
           </div>
           <div
             className={`text-lg text-center px-10 tracking-widest uppercase font-light text-[#FEFAF4] ${forumFont.className}`}
           >
-            Our menu balances traditional Japanese staples with modern
-            Asian-inspired creations, including: Tom Yum Ramen, Japanese Ramen,
-            Wasabi-style Seafood, LinguineMiso Cod, Kabayaki,
-            SteakJapanese-style Halibut, Fish & Chips Chef-driven sushi
-            programEvery dish reflects a harmony of technique, culture, and
-            innovation
+            {imageSliderData?.description ||
+              "Our menu balances traditional Japanese staples with modern Asian-inspired creations..."}
           </div>
           <button
             className={`font-medium text-nowrap px-5 py-3 text-black rounded-4xl text-center min-w-[10rem] mx-auto ${Optima_bold.className}`}
             style={{ backgroundColor: "#C0A078" }}
           >
-            SEE MENU
+            {imageSliderData?.buttonText || "SEE MENU"}
           </button>
         </div>
       </div>
       <motion.div
-        className="hidden lg:block"
+        className="hidden bg-black lg:block"
         ref={parentRef}
         style={{ height: "300vh", position: "relative" }}
         initial={{ translateY: -8, scale: 0.95 }}

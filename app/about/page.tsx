@@ -7,23 +7,33 @@ import { AboutAndBeliefMobile } from "./components/about-belief-mobile-only";
 import GeneralHeader from "../Components/GeneralHeader";
 import Team from "./components/aboutTeam";
 import { NewAboutBelief } from "./components/NewAboutBelief";
-import { getFooterData, getTheSpaceData } from "../sanity/lib/queries";
+import {
+  getAboutBeliefData,
+  getFooterData,
+  getImageSliderData,
+  getTeamData,
+  getTheSpaceData,
+} from "../sanity/lib/queries";
 
 export const revalidate = 60;
 const Page = async () => {
-  const [footerData, theSpaceData] = await Promise.all([
-    getFooterData(),
-    getTheSpaceData(),
-  ]);
+  const [footerData, theSpaceData, imageSliderData, teamData, aboutBeliefData] =
+    await Promise.all([
+      getFooterData(),
+      getTheSpaceData(),
+      getImageSliderData(),
+      getTeamData(),
+      getAboutBeliefData(),
+    ]);
   return (
     <div className="w-full ">
       <GeneralHeader canShow={false} />
       {/* <AboutAndBelief setCanShow={setCanShow} />
       <AboutAndBeliefMobile setCanShow={setCanShow} /> */}
-      <NewAboutBelief />
+      <NewAboutBelief aboutBeliefData={aboutBeliefData} />
       {/* <Timeline /> */}
-      <Team />
-      <ImagesSlider />
+      <Team teamData={teamData} />
+      <ImagesSlider imageSliderData={imageSliderData} />
 
       <FeastInStyle theSpaceData={theSpaceData} />
       <Footer footerData={footerData} />

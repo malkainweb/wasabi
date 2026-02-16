@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import Header from "./Home/components/Header";
+import { getFooterData } from "./sanity/lib/queries";
 
 // Lazy load all components except Header
 const Menu = dynamic(() => import("./Home/components/Menu"), {
@@ -22,7 +23,9 @@ const Footer = dynamic(() => import("./Home/components/Footer"), {
   loading: () => <div className="h-64 bg-black" />,
 });
 
-export default function Home() {
+export const revalidate = 60;
+const Home = async () => {
+  const [footerData] = await Promise.all([getFooterData()]);
   return (
     <>
       <Header />
@@ -31,7 +34,9 @@ export default function Home() {
       <HomeRecipes />
       <OurStory />
       <OurExperince />
-      <Footer />
+      <Footer footerData={footerData} />
     </>
   );
-}
+};
+
+export default Home;
