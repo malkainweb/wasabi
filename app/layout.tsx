@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import LenisProvider from "./utils/LenisProvider";
+import Preloader from "./Home/components/Preloader";
 
 export const metadata: Metadata = {
   title: "Wasabi Modern Kitchen | Japanese Fine Dining in Kamloops",
@@ -98,6 +99,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={``}>
+        <Preloader />
         <LenisProvider>{children} </LenisProvider>
       </body>
     </html>
