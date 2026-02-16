@@ -3,8 +3,13 @@ import {
   AboutBeliefData,
   FooterData,
   GalleryData,
+  HomeHeaderData,
+  HomeMenuData,
+  HomeRecipesData,
   ImageSliderData,
   MenuGalleryData,
+  OurExperienceData,
+  OurStoryData,
   TeamData,
   TheSpaceData,
 } from "./types";
@@ -117,6 +122,112 @@ export async function getGalleryData(): Promise<GalleryData | null> {
     return data;
   } catch (error) {
     console.error("Error fetching gallery data:", error);
+    return null;
+  }
+}
+
+export async function getOurStoryData(): Promise<OurStoryData | null> {
+  try {
+    const data = await client.fetch(`*[_type == "ourStory"][0]{
+      subtitle,
+      title,
+      description,
+      mainImage,
+      buttonImage,
+      buttonText,
+      buttonLink
+    }`);
+    return data;
+  } catch (error) {
+    console.error("Error fetching our story data:", error);
+    return null;
+  }
+}
+
+export async function getOurExperienceData(): Promise<OurExperienceData | null> {
+  try {
+    const data = await client.fetch(`*[_type == "ourExperience"][0]{
+      mainImage,
+      mobileImage,
+      mainTitle,
+      locationTitle,
+      locationCountry,
+      addressLine1,
+      addressLine2,
+      hoursLabel,
+      operatingHours,
+      openDaysLabel,
+      openDays,
+      leftImages,
+      rightImages
+    }`);
+    return data;
+  } catch (error) {
+    console.error("Error fetching our experience data:", error);
+    return null;
+  }
+}
+
+export async function getHomeRecipesData(): Promise<HomeRecipesData | null> {
+  try {
+    const data = await client.fetch(`*[_type == "homeRecipes"][0]{
+      mainTitle,
+      buttonText,
+      buttonLink,
+      recipeImages[]{
+        asset,
+        alt
+      }
+    }`);
+    return data;
+  } catch (error) {
+    console.error("Error fetching home recipes data:", error);
+    return null;
+  }
+}
+
+export async function getHomeMenuData(): Promise<HomeMenuData | null> {
+  try {
+    const data = await client.fetch(`*[_type == "homeMenu"][0]{
+      mainTitle,
+      centerImage,
+      description,
+      buttonText,
+      buttonLink,
+      leftSideItems[]{
+        image,
+        name
+      },
+      rightSideItems[]{
+        image,
+        name
+      }
+    }`);
+    return data;
+  } catch (error) {
+    console.error("Error fetching home menu data:", error);
+    return null;
+  }
+}
+
+export async function getHomeHeaderData(): Promise<HomeHeaderData | null> {
+  try {
+    const data = await client.fetch(`*[_type == "homeHeader"][0]{
+      mainTitle,
+      heroImage,
+      ctaTitle,
+      ctaButtonText,
+      ctaButtonLink,
+      leftGridImages,
+      rightGridImages,
+      bottomSectionTitle,
+      bottomSectionDescription,
+      reservationButtonText,
+      reservationButtonLink
+    }`);
+    return data;
+  } catch (error) {
+    console.error("Error fetching home header data:", error);
     return null;
   }
 }

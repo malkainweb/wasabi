@@ -1,10 +1,16 @@
 import dynamic from "next/dynamic";
 import Header from "./Home/components/Header";
-import { getFooterData } from "./sanity/lib/queries";
+import {
+  getFooterData,
+  getHomeHeaderData,
+  getHomeMenuData,
+  getHomeRecipesData,
+  getOurExperienceData,
+  getOurStoryData,
+} from "./sanity/lib/queries";
 
-// Lazy load all components except Header
 const Menu = dynamic(() => import("./Home/components/Menu"), {
-  loading: () => <div className="h-screen bg-[#FEFAF4]" />, // Optional loading placeholder
+  loading: () => <div className="h-screen bg-[#FEFAF4]" />,
 });
 
 const HomeRecipes = dynamic(() => import("./Home/components/Recipes"), {
@@ -24,16 +30,33 @@ const Footer = dynamic(() => import("./Home/components/Footer"), {
 });
 
 export const revalidate = 60;
+
 const Home = async () => {
-  const [footerData] = await Promise.all([getFooterData()]);
+  const [
+    footerData,
+    ourStoryData,
+    ourExperienceData,
+    homeRecipesData,
+    homeMenuData,
+    homeHeaderData,
+  ] = await Promise.all([
+    getFooterData(),
+    getOurStoryData(),
+    getOurExperienceData(),
+    getHomeRecipesData(),
+    getHomeMenuData(),
+    getHomeHeaderData(),
+  ]);
+
   return (
     <>
-      <Header />
+      <Header homeHeaderData={homeHeaderData} />
       <div className="bg-black h-[2rem]"></div>
-      <Menu />
-      <HomeRecipes />
-      <OurStory />
-      <OurExperince />
+      <Menu homeMenuData={homeMenuData} />
+      <HomeRecipes homeRecipesData={homeRecipesData} />
+      <OurStory ourStoryData={ourStoryData} />
+      <OurExperince ourExperienceData={ourExperienceData} />
+
       <Footer footerData={footerData} />
     </>
   );

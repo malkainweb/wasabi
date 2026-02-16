@@ -11,6 +11,13 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { v4 as uuidv4 } from "uuid"; // For unique keys, install with: npm i uuid
 
+import { HomeHeaderData } from "@/app/sanity/lib/types";
+import { urlFor } from "@/app/sanity/lib/image";
+
+interface HeaderProps {
+  homeHeaderData: HomeHeaderData | null;
+}
+
 import {
   motion,
   useMotionTemplate,
@@ -27,17 +34,27 @@ import MobileGourmetBliss from "./MobileGourmentBliss";
 import { MenuIcon } from "lucide-react";
 import { MobileNavBar } from "./MobileNavBar";
 
-const Header = () => {
-  const arr = [
-    { bg: "bg-red-400", label: "A", img: leftCenter },
-    { bg: "bg-yellow-400", label: "B", img: lefttop },
-    { bg: "bg-blue-400", label: "C", img: leftBottom },
-  ];
-  const arr2 = [
-    { bg: "bg-red-400", label: "A", img: righttop },
-    { bg: "bg-yellow-400", label: "B", img: rightCenter },
-    { bg: "bg-blue-400", label: "C", img: rightbottom },
-  ];
+const Header = ({ homeHeaderData }: HeaderProps) => {
+  // Default arrays
+  const defaultLeftImages = [leftCenter, lefttop, leftBottom];
+  const defaultRightImages = [righttop, rightCenter, rightbottom];
+
+  // Map Sanity data
+  const arr = homeHeaderData?.leftGridImages
+    ? homeHeaderData.leftGridImages.map((img) => ({
+        img: urlFor(img).url(),
+      }))
+    : defaultLeftImages.map((img) => ({ img: img.src }));
+
+  const arr2 = homeHeaderData?.rightGridImages
+    ? homeHeaderData.rightGridImages.map((img) => ({
+        img: urlFor(img).url(),
+      }))
+    : defaultRightImages.map((img) => ({ img: img.src }));
+
+  const heroImageUrl = homeHeaderData?.heroImage
+    ? urlFor(homeHeaderData.heroImage).url()
+    : mainImg.src;
   const scrollDirection = useScrollDirection();
 
   const gridClasses = [
@@ -238,9 +255,9 @@ const Header = () => {
         className={` bg-[#FEFAF4] pt-[12rem] overflow-clip w-full  flex-col h-[400vh] hidden md:flex relative`}
       >
         <h1
-          className={`uppercase   z-[20] text-center text-[80px] leading-[120%] mb-[-5vh] text-[#3E2E1C] ${forumFont.className} tracking-widest`}
+          className={`uppercase   z-[20] max-w-xl mx-auto text-center text-[80px] leading-[120%] mb-[-5vh] text-[#3E2E1C] ${forumFont.className} tracking-widest`}
         >
-          Refined <br /> Indulgence
+          {homeHeaderData?.mainTitle || "Refined Indulgence"}
         </h1>{" "}
         <motion.div
           className="w-full  sticky bg-[#FEFAF4] top-0 shrink-0 left-0 h-[100vh]"
@@ -252,11 +269,13 @@ const Header = () => {
             className="w-full  overflow-clip h-full"
           >
             <Image
-              src={mainImg}
+              src={heroImageUrl}
               alt="Header Image"
+              width={700}
+              height={700}
               className="w-full h-full object-cover"
               priority
-              draggable={false}
+              quality={85}
             />
           </motion.div>
         </motion.div>
@@ -264,15 +283,15 @@ const Header = () => {
           <div className="hidden md:flex w-full shrink-0 h-full  max-w-[50%] bg-[#FEFAF4] px-8 items-center">
             <div className="grid grid-cols-2  grid-rows-[40%_60%] gap-6 w-full h-full  max-h-[70%]">
               {arr.map((item, idx) => (
-                <div
-                  key={item.label}
-                  className={` bg-black ${gridClasses2[idx]}`}
-                >
+                <div key={idx} className={`bg-black ${gridClasses2[idx]}`}>
                   <Image
                     src={item.img}
-                    alt={item.label}
+                    alt={`Left Grid ${idx + 1}`}
+                    width={200}
+                    height={200}
                     className="w-full h-full object-cover"
-                  />{" "}
+                    quality={85}
+                  />
                 </div>
               ))}
             </div>
@@ -292,16 +311,16 @@ const Header = () => {
               className="flex flex-col items-center justify-center gap-1"
             >
               <motion.h1
-                className={`uppercase tracking-widest text-center ${forumFont.className} text-7xl`}
+                className={`uppercase tracking-widest max-w-xl  text-center ${forumFont.className} text-7xl`}
               >
-                MAke a<br /> reservation
+                {homeHeaderData?.ctaTitle || "MAKE A RESERVATION"}
               </motion.h1>
               <Link
                 href={"/menu"}
                 style={{ transition: "0.4s ease" }}
                 className={`${notoSansFont.className} bg-[#C0A078] text-black px-[1.5rem] tracking-widest cursor-pointer hover:bg-white hover:text-black py-[0.6rem]  rounded-full w-fit`}
               >
-                SEE MENU{" "}
+                {homeHeaderData?.ctaButtonText || "SEE MENU"}
               </Link>
             </motion.div>
           </motion.div>
@@ -309,14 +328,14 @@ const Header = () => {
           <div className="hidden  md:flex w-full shrink-0 h-full  max-w-[50%] bg-[#FEFAF4] px-8 items-center">
             <div className="grid grid-cols-2 overflow-hidden  grid-rows-[30%_70%] gap-6 w-full h-full  max-h-[70%]">
               {arr2.map((item, idx) => (
-                <div
-                  key={item.label}
-                  className={`bg-black ${gridClasses[idx]}`}
-                >
+                <div key={idx} className={`bg-black ${gridClasses[idx]}`}>
                   <Image
                     src={item.img}
-                    alt={item.label}
+                    alt={`Right Grid ${idx + 1}`}
+                    width={200}
+                    height={200}
                     className="w-full h-full object-cover"
+                    quality={85}
                   />
                 </div>
               ))}
@@ -328,23 +347,29 @@ const Header = () => {
             <div className="h-[90%] w-full absolute top-0 left-0  bg-gradient-to-b  from-black via-black"></div>
             <div className="flex z-[100] items-center  py-[10rem]  gap-[2rem] flex-col">
               <h2
-                className={`"z-[10] text-white tracking-widest text-7xl text-center font-light uppercase ${forumFont.className}`}
+                className={`"z-[10] text-white max-w-xl tracking-widest text-7xl text-center font-light uppercase ${forumFont.className}`}
               >
-                Experience <br /> Gourmet Bliss
+                {homeHeaderData?.bottomSectionTitle ||
+                  "Experience Gourmet Bliss"}
               </h2>
               <p
-                className={`${notoSansFont.className} z-[10] tracking-widest capitalize text-white  font-light text-center text-lg`}
+                className={`${notoSansFont.className} max-w-xl z-[10] tracking-widest capitalize text-white  font-light text-center text-lg`}
               >
-                Savor elegance, flavor, and ambiance like never before. <br />{" "}
-                Now Open: Tuesday – Sunday | 5 PM – 11 PM
+                {homeHeaderData?.bottomSectionDescription ||
+                  "Savor elegance, flavor, and ambiance like never before. Now Open: Tuesday – Sunday | 5 PM – 11 PM"}
               </p>
 
               <button
                 style={{ transition: "0.4s ease" }}
                 className={`${notoSansFont.className} px-[2.4rem] tracking-widest cursor-pointer hover:bg-white hover:text-black py-[0.7rem] border border-white rounded-full w-fit`}
               >
-                <a href="https://www.opentable.ca/booking/restref/availability?lang=en-CA&correlationId=5bc9fb52-82e0-4ea6-bab1-20314e610618&restRef=1487164&otSource=Restaurant%20website">
-                  RESERVE A TABLE
+                <a
+                  href={
+                    homeHeaderData?.reservationButtonLink ||
+                    "https://www.opentable.ca/booking/restref/availability"
+                  }
+                >
+                  {homeHeaderData?.reservationButtonText || "RESERVE A TABLE"}
                 </a>
               </button>
             </div>
