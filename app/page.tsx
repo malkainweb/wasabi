@@ -52,8 +52,8 @@ const Home = async () => {
     <>
       <Header homeHeaderData={homeHeaderData} />
       <div className="bg-black h-[2rem]"></div>
-      <Menu homeMenuData={homeMenuData} />
-      <HomeRecipes homeRecipesData={homeRecipesData} />
+      {/* <Menu homeMenuData={homeMenuData} /> */}
+      {/* <HomeRecipes homeRecipesData={homeRecipesData} /> */}
       <OurStory ourStoryData={ourStoryData} />
       <OurExperince ourExperienceData={ourExperienceData} />
 
