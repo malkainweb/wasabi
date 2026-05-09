@@ -109,7 +109,10 @@ const OurExperince = ({ ourExperienceData }: OurExperinceProps) => {
 
   return (
     <>
-      <MobileLocationCard bgImage={mobileImageUrl} />
+      <MobileLocationCard
+        bgImage={mobileImageUrl}
+        ourExperienceData={ourExperienceData}
+      />{" "}
       <motion.div
         ref={containerRef}
         initial={{ scale: 1.4, opacity: 0, y: "-4rem" }}
@@ -185,7 +188,7 @@ const OurExperince = ({ ourExperienceData }: OurExperinceProps) => {
               className="absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%]"
             >
               <p
-                className={`${forumFont.className} text-[#E9DFCF] text-center mb-3 tracking-widest text-6xl`}
+                className={`${forumFont.className} text-[#E9DFCF]  text-center mb-3 tracking-widest text-6xl`}
               >
                 {ourExperienceData?.locationTitle || "LOCATION"}
               </p>

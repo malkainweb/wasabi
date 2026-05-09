@@ -1,43 +1,33 @@
 "use client";
 
-import Image, { StaticImageData } from "next/image";
-import { forumFont, notoSansFont } from "@/app/utils/font";
+import Image from "next/image";
+import { forumFont, notoSansFont, Optima_regular } from "@/app/utils/font";
+import { OurExperienceData } from "@/app/sanity/lib/types";
 
-type Props = {
-  bgImage?: StaticImageData | string;
-  city?: string;
-  addressLines?: string[];
-  openingTime2?: string; // e.g. "Mon - Sat"
-  openingTime?: string; // e.g. "9AM - 10PM"
-  className?: string;
-  openingDays?: string;
-};
+interface MobileLocationCardProps {
+  bgImage: string;
+  ourExperienceData: OurExperienceData | null;
+}
 
 export default function MobileLocationCard({
   bgImage,
-  city = "NEW YORK",
-  addressLines = ["102-1020 Talasa way, ", "Kamloops BC V2H 03C"],
-  openingDays = "7 days a week",
-  openingTime2 = "11:30 AM - 9:00 PM",
-  openingTime = "11:30 AM - 11:00 PM",
-  className = "",
-}: Props) {
+  ourExperienceData,
+}: MobileLocationCardProps) {
   return (
     <section
-      className={`relative w-full h-[92vh] md:hidden overflow-hidden ${className} md:rounded-2xl`}
+      className="relative w-full h-[92vh] md:hidden overflow-hidden"
       aria-label="Location"
     >
       {/* Background image */}
       <Image
-        src={bgImage ? bgImage : " "}
-        alt=""
+        src={bgImage}
+        alt="Location"
         fill
         className="object-cover"
         priority
+        quality={85}
       />
 
-      {/* Dark vignette for readability */}
-      {/* <div className="absolute inset-0 bg-black/40" /> */}
       <div className="absolute inset-0 bg-black/10" />
 
       {/* Title */}
@@ -45,77 +35,55 @@ export default function MobileLocationCard({
         <h2
           className={`${forumFont.className} text-[#E9DFCF] uppercase tracking-[0.35em] text-[2rem] mb-6`}
         >
-          Location
+          {ourExperienceData?.locationTitle || "LOCATION"}
         </h2>
 
-        {/* Glass card */}
-        <div className="w-[90%] max-w-[28rem] rounded-[18px] overflow-hidden backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.35)] ring-1 ring-white/10">
-          {/* Top bar */}
-          <div className="bg-white/[0.08] px-5 py-4">
-            <span
-              className={`${forumFont.className} text-lg tracking-[0.25em] text-white/90`}
-            >
-              {city}
-            </span>
-          </div>
-          <div className="border-b border-[white]/20" />
-          {/* Body */}
-          <div className="bg-white/[0.05] px-5 py-4">
-            {/* Address */}
-            <div className="py-3">
-              <p
-                className={`${notoSansFont.className} text-sm font-light leading-6 tracking-[0.08em] text-white`}
+        {/* Glass card - SAME AS DESKTOP */}
+        <div className="w-[90%] max-w-[28rem] rounded-[30px] overflow-hidden backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.35)] ring-1 ring-white/10">
+          <div className="bg-[black]/40 backdrop-blur-md">
+            <div className="relative z-10 flex pb-[1rem] pt-[1rem] flex-col gap-2">
+              {/* Country */}
+              <div
+                className={`text-lg px-5  text-white font-medium tracking-widest py-[0.3rem] uppercase ${forumFont.className}`}
               >
-                {addressLines.map((l, i) => (
-                  <span key={i} className="block">
-                    {l}
+                {ourExperienceData?.locationCountry || "Canada"}
+              </div>
+
+              <div className="border-b border-[white]/20 mb-4"> </div>
+
+              {/* Address */}
+              <div className="px-5 font-normal mb-2 tracking-[0.25rem]">
+                <p className={`${Optima_regular.className} text-white`}>
+                  {ourExperienceData?.addressLine1 || "102-1020 Talasa way,"}
+                  <br />
+                  {ourExperienceData?.addressLine2 || "Kamloops BC V2H 03C"}
+                </p>
+              </div>
+
+              {/* Hours Info */}
+              <div
+                className={`flex flex-col px-5 text-sm tracking-[0.2rem] gap-2 text-[white] mb-2 ${notoSansFont.className}`}
+              >
+                <div className="flex items-center gap-3">
+                  <span className="text-[white]/60">
+                    {ourExperienceData?.hoursLabel || "Hours of Operation"}
                   </span>
-                ))}
-              </p>
-            </div>
+                  <span className="border-b border-[white]/50 flex-1 mx-2"></span>
+                  <span className="text-[white]/80 font-normal whitespace-nowrap">
+                    {ourExperienceData?.operatingHours || "11:30 AM – 9:00 PM"}
+                  </span>
+                </div>
 
-            {/* Opening Days */}
-            <div className="flex items-center py-3 font-light">
-              <span
-                className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white/50`}
-              >
-                Hours of Operation
-              </span>
-              <span className="mx-3 flex-1 h-px bg-white/10" />
-              <span
-                className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white`}
-              >
-                {openingDays}
-              </span>
-            </div>
-            {/* Opening time2 */}
-            <div className="flex items-center py-3 font-light">
-              <span
-                className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white/50`}
-              >
-                Sunday - Thursday
-              </span>
-              <span className="mx-3 flex-1 h-px bg-white/10" />
-              <span
-                className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white`}
-              >
-                {openingTime2}
-              </span>
-            </div>
-
-            {/* Opening Time */}
-            <div className="flex items-center py-3 font-light">
-              <span
-                className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white/50`}
-              >
-                Friday - Saturday
-              </span>
-              <span className="mx-3 flex-1 h-px bg-white/10" />
-              <span
-                className={`${notoSansFont.className} text-[12px] tracking-[0.18em] text-white`}
-              >
-                {openingTime}
-              </span>
+                <div className="flex items-center gap-3">
+                  <span className="text-[white]/60">
+                    {ourExperienceData?.openDaysLabel || "Open"}
+                  </span>
+                  <span className="border-b border-[white]/50 flex-1 mx-2"></span>
+                  <span className="text-[white]/80 font-normal">
+                    {ourExperienceData?.openDays || "Seven days a week"}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -123,9 +91,3 @@ export default function MobileLocationCard({
     </section>
   );
 }
-
-/* Usage:
-import hero from '@/public/location-bg.webp';
-
-<LocationMobileCard bgImage={hero} />
-*/
